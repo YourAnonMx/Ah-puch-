@@ -60,9 +60,7 @@ https://example.com/application
 --targets-file targets.txt
 ```
 
-The examples use documentation addresses or placeholders. In a private
-installation, the operator supplies the target and chooses the desired mode;
-the application does not add an authorization gate or ask for approval.
+The examples use documentation addresses or placeholders.
 
 ## Installation
 
@@ -630,9 +628,8 @@ Generated reports, caches, virtual environments, test suites, audit work
 files, journals, API stores, build directories, and local run results are not
 part of the publication tree.
 
-## License and private use
+## License and use
 
-This repository is intended for private operator use. Review the individual
-licenses of every optional external tool and data source before redistribution.
+Educational purpose only
 Keep provider credentials, private dictionaries, target lists, and assessment
 results outside Git.
