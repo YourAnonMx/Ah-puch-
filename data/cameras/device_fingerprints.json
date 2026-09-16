@@ -1,0 +1,2367 @@
+{
+  "format": 2,
+  "fingerprints": [
+    {
+      "model": "HG8120",
+      "signals": [
+        "HG8120"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "QTech-QMO234",
+      "signals": [
+        "List\\)\\ \\|\\|\\ \\\"FFFE\\\""
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "HG8240",
+      "signals": [
+        "HG8240"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "HG8245",
+      "signals": [
+        "HG8245"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Mikrotik-Router",
+      "signals": [
+        "mikrotik"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "MTTC-GPON-Router",
+      "signals": [
+        "UNKNOWN 400"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "MTTC-GPON-Router",
+      "signals": [
+        "#4040cc"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Cisco-Router",
+      "signals": [
+        "cisco"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "iRZ-SCADA",
+      "signals": [
+        "iRZ"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Keenetic-Router",
+      "signals": [
+        "Keenetic"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "InnboxE70-Router",
+      "signals": [
+        "InnboxE70"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "MTSRouter",
+      "signals": [
+        "MTSRouter"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Tenda-Router",
+      "signals": [
+        "Tenda"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "APC-UPS",
+      "signals": [
+        "APC"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "APC-UPS",
+      "signals": [
+        "APC"
+      ],
+      "response_lines": 17,
+      "match": "response-lines",
+      "rule": "LenRule"
+    },
+    {
+      "model": "BESA-Wifi-MGR",
+      "signals": [
+        "vegaLora"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "DIR-615-Router",
+      "signals": [
+        "DIR-615"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Robustel-Router",
+      "signals": [
+        "\\>Router-index\\<"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Robustel-Router",
+      "signals": [
+        "cs_goahead_pic"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "NetSuveillance-DVR",
+      "signals": [
+        "NetSuveillance"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "DEVA-Broadcast-Device",
+      "signals": [
+        "DEVA Broadcast"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Eltex-PBX-SGW",
+      "signals": [
+        "Media Gateway",
+        "Eltex Ltd"
+      ],
+      "match": "all",
+      "rule": "Rule+Rule2"
+    },
+    {
+      "model": "Eltex-Switch",
+      "signals": [
+        "EltexWebs-Router"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "TAU-VoIP-Router",
+      "signals": [
+        "TAU"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Eltex-1402G-R5-Router",
+      "signals": [
+        "Eltex-1402G-R5"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Eltex-NTU-VoIP-Router",
+      "signals": [
+        "NTU"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Eltex-Router",
+      "signals": [
+        "Eltex"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Juniper-Router",
+      "signals": [
+        "Juniper"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Rt-Cse4-Lua-Router",
+      "signals": [
+        "Rt-Cse4"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Rt-Cse4-Krocks",
+      "signals": [
+        "kroks\\.ico"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "OpenSCADA-HMI",
+      "signals": [
+        "OpenSCADA"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Raisecomm-Webs",
+      "signals": [
+        "\\>Web user login\\<"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Raisecomm-Router",
+      "signals": [
+        "Raisecomm"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Rapid-SCADA",
+      "signals": [
+        "Rapid SCADA"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Schneider-SCADA",
+      "signals": [
+        "Schneider"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "SNR-CPE-ME2-Lite-Router",
+      "signals": [
+        "SNR-CPE-ME2-Lite"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "UR-305B-Router",
+      "signals": [
+        "UR-305B"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "ZXHN-E5501-Router",
+      "signals": [
+        "ZXHN-E5501"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "ZTE-F612-Router",
+      "signals": [
+        "ZTE-F612"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "ZTE-F670-Router",
+      "signals": [
+        "ZTE-F670"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "ZXHN-H118N-Router",
+      "signals": [
+        "ZXHN-H118N"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "ZTE-H298A-Router",
+      "signals": [
+        "ZTE-H298A"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "ZyNOS-ADSL-Router",
+      "signals": [
+        "ZyNOS-ADSL"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Zyzel-Firewall",
+      "signals": [
+        "Zyzel"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "ZyWALL-Firewall",
+      "signals": [
+        "Zywall"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Xaomi-Router",
+      "signals": [
+        "Xaomi"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "TP-Link-Router",
+      "signals": [
+        "NT color=\\#ee0000\\>Not"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Vigintos-Elektronika",
+      "signals": [
+        "Vigintos"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Digiton-Audio",
+      "signals": [
+        "Digiton"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "QTech-QMO-234",
+      "signals": [
+        "\\>Router\\<",
+        "ble\\\" content\\=\\\"IE=EmulateIE7"
+      ],
+      "match": "all",
+      "rule": "Rule+Rule2"
+    },
+    {
+      "model": "DD-WRT-Router",
+      "signals": [
+        "DD-WRT"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "VNC-Server",
+      "signals": [
+        "VNC"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Rostelecom-RT-GM-1",
+      "signals": [
+        "a http\\-equiv\\=\\'Pragma",
+        "\\> Authorization warning\\<"
+      ],
+      "match": "all",
+      "rule": "Rule+Rule2"
+    },
+    {
+      "model": "OBEH-SCADA-Router",
+      "signals": [
+        "xhtml11.dtd",
+        "URL=\\/cgi-bin\\/luci",
+        "\\>LuCI - Lua C"
+      ],
+      "match": "all",
+      "rule": "Rule+Rule2+Rule3"
+    },
+    {
+      "model": "Moxa-SCADA-Router",
+      "signals": [
+        "Moxa"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Moxa-SCADA-Router",
+      "signals": [
+        "\\>NPort Web"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Airocon-Fast-1744",
+      "signals": [
+        "HTTP-EQUIV\\=\\\"Pragma\\\" CON"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "NewTech-MDM6000-Sat-Modem",
+      "signals": [
+        "MDM6000"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "NewTech-Sat-SkyControl",
+      "signals": [
+        "SkyControl Web GUI system"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Satis-Sat-Monitor",
+      "signals": [
+        "Satis Monitor"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Rostelecom-InneboxE80",
+      "signals": [
+        "InneboxE80"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "NZIF-SCADA",
+      "signals": [
+        "NZIF"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Sercomm-RV6699",
+      "signals": [
+        "p-equiv\\=\\'Pragma\\' c",
+        "t\\=\\'no-cache\\'\\>\\<title\\> Auth"
+      ],
+      "match": "all",
+      "rule": "Rule+Rule2"
+    },
+    {
+      "model": "Barix-Instreamer",
+      "signals": [
+        "Barix"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Barix-Transm-Decoder",
+      "signals": [
+        "uifstatus\\.html"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Echolot-FM",
+      "signals": [
+        "Echolot"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Barix-Audio-Device",
+      "signals": [
+        "BARIX"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "ASUS-Router",
+      "signals": [
+        "x-frame-options\\: SAMEORIGIN",
+        "L\\>\\<HEAD\\>\\<script\\>top\\.loc"
+      ],
+      "match": "all",
+      "rule": "Rule+Rule2"
+    },
+    {
+      "model": "Wive-NG-Router",
+      "signals": [
+        "Wive-NG"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "NetAgent-UPS",
+      "signals": [
+        "\\>UPS Agent(My O"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Enviro-Temp-SCADA",
+      "signals": [
+        "MOHAPX"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Atmospheric-SCADA",
+      "signals": [
+        "\\>IWS\\<"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "BUK-TG-Gas",
+      "signals": [
+        "\\>BUK-TS"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "BUK-TSG-Gas",
+      "signals": [
+        "bukwutils_crn"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "OLHV1K0-UPS",
+      "signals": [
+        "onLoad\\=\\\"getQPI33()"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Waviot-SCADA",
+      "signals": [
+        "9YXBpfz0-HMWdAwgNLA3U"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "IB-NT-UPS",
+      "signals": [
+        "\\>IB-NT"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "IB-COM-UPS",
+      "signals": [
+        "\\>IB-COM"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Rostelecom-RX-22200",
+      "signals": [
+        ">RX-22200"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "HMI-Home-SCADA",
+      "signals": [
+        ">HMI"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Leica-SCADA",
+      "signals": [
+        "leica-geosystems"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Ewon-SCADA",
+      "signals": [
+        "MainAst\\.shtm"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Broadcom-Router",
+      "signals": [
+        "logo_bdcom_en"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "SCADA-S3900-24T6X",
+      "signals": [
+        "S3900-24T6X"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "VAS-WiFi",
+      "signals": [
+        "СКАТ"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Sercomm-RV6699-v4",
+      "signals": [
+        "RV6699"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Airocon-EdgeMax",
+      "signals": [
+        "UBNT"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Airocon-EdgeMax",
+      "signals": [
+        "Ubiquiti"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Grandstream-UCM6308",
+      "signals": [
+        "Grandstream"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Digiline-Audio-Device",
+      "signals": [
+        "Digiline"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "DB6400-Audio-Device",
+      "signals": [
+        "DB6400"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "1C_CRM-or-OpenFilesystem",
+      "signals": [
+        "1С\\:Предприятие",
+        "\\[DIR\\]"
+      ],
+      "match": "all",
+      "rule": "Rule+Rule2"
+    },
+    {
+      "model": "SNR-ERD-BIG-Router",
+      "signals": [
+        "401\\.shtml\\\"\\;\\}function s()\\{AC"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "SNR-ERD-Router",
+      "signals": [
+        "SNR-ERD"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Airocon-Router",
+      "signals": [
+        "Airocon"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "D-Link-Router",
+      "signals": [
+        "DIR-"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "D-Link-VoIP-Router",
+      "signals": [
+        "DVG-"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "D-Link-DWR-Router",
+      "signals": [
+        "DWR-"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Micro-DSL-Router",
+      "signals": [
+        "ZXDSL"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Micro-DSL-Router",
+      "signals": [
+        "F@ST"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "QTech-QBR-1040",
+      "signals": [
+        "QBR"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Realtec-ONU-QTECH",
+      "signals": [
+        "QTECH"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Rotek",
+      "signals": [
+        "Rotek"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "ZTE-F623-Router",
+      "signals": [
+        "ZTE F623"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "ZTE-F660-Router",
+      "signals": [
+        "F660"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "ZyNOS-Router",
+      "signals": [
+        "ZyNOS"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Upvel-Router",
+      "signals": [
+        "Upvel"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "TRENDnet-Router",
+      "signals": [
+        "TRENDnet"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "TP-LINK-Router",
+      "signals": [
+        "TP-LINK"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "OpenWrt-Router",
+      "signals": [
+        "OpenWrt"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "pfSense-Router",
+      "signals": [
+        "pfSense"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Hikvision-Camera",
+      "signals": [
+        "Hikvision"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Dahua-Camera",
+      "signals": [
+        "Dahua"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "SNR-Router",
+      "signals": [
+        "SNR"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Huawei-Router",
+      "signals": [
+        "Huawei"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Lua-Enabled-Router",
+      "signals": [
+        "Lua Configuration"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "PEEK-Traffic-Control",
+      "signals": [
+        "PEEK"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "FLIR-Camera",
+      "signals": [
+        "FLIR"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "EuroController",
+      "signals": [
+        "EuroController"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Masterhost-Web-Server",
+      "signals": [
+        "masterhost"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Proxy-Auth-Req-407",
+      "signals": [
+        "407 Proxy"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Site-Firewall-Block",
+      "signals": [
+        "403 Forbidden"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Site-Auth-Block-401",
+      "signals": [
+        "401 Unauthorized"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Site-Authorization-Block-401",
+      "signals": [
+        "401 Authorization Required"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Site-Moved-Block",
+      "signals": [
+        "301 Moved Permanently"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Site-Not-Found-404",
+      "signals": [
+        "404 Not Found"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Site-Bad-Gateway-502",
+      "signals": [
+        "502 Bad Gateway"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Nginx-Web-Server",
+      "signals": [
+        "Welcome to nginx"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Site-Not-Found",
+      "signals": [
+        "Not Found"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Site-Not-Found",
+      "signals": [
+        "not found"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Site-Bad-Request-400",
+      "signals": [
+        "400 Bad Request"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Mikrotik-Router",
+      "signals": [
+        "RouterOS"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Site-Found-Empty-302",
+      "signals": [
+        "302 Found"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Windows-IIS-Server",
+      "signals": [
+        "IIS Windows Server"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Windows-IIS-Web",
+      "signals": [
+        "IIS Windows"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Site-URL-Unretrieveable",
+      "signals": [
+        "ERROR: The requested"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "NETSurveillance-DVR",
+      "signals": [
+        "NETSurveillance WEB"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Site-Service-Unavailable",
+      "signals": [
+        "Service Unavailable"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Site-Internal-Server-Error",
+      "signals": [
+        "500 Internal Server Error"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "FASTPANEL",
+      "signals": [
+        "FASTPANEL"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Apache2-Ubuntu-Web",
+      "signals": [
+        "Apache2 Ubuntu Default Page"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Site-Domain_Unlinked",
+      "signals": [
+        "domain is not linked"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Web-Server",
+      "signals": [
+        "WEB SERVICE"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Apache-CentOS-Web",
+      "signals": [
+        "Page powered by CentOS"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Site-Error-404",
+      "signals": [
+        "Error 404"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Site-Error-NotFound-404",
+      "signals": [
+        "Error 404 - Page Not Found"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Site-Document-Error",
+      "signals": [
+        "Document Error: Not Found"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Open-Directory",
+      "signals": [
+        "Index of"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Site-Invalid-Url",
+      "signals": [
+        "Invalid URL"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "AiCloud",
+      "signals": [
+        "AiCloud"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Site-Document-Error",
+      "signals": [
+        "Document Error: Data follows"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "ACEStream-Tracker-Stats",
+      "signals": [
+        "ACEStream Tracker Statistics"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Cloudflare-IP-Blocked",
+      "signals": [
+        "not allowed | Cloudflare"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Site-Service-Unavailable-503",
+      "signals": [
+        "503 Service"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Site-Gone-410",
+      "signals": [
+        "410 Gone"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Site-Stuck-Opening",
+      "signals": [
+        "Opening\\.\\.\\."
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Windows-IIS7-Web",
+      "signals": [
+        "IIS7"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Vesta",
+      "signals": [
+        "Vesta"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Macroscop-Web",
+      "signals": [
+        "Macroscop Web-Client"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Site-Login-Bad",
+      "signals": [
+        "Login Incorrect"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Home-Assistant",
+      "signals": [
+        "Home Assistant"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "VPS-VD5-Server",
+      "signals": [
+        "VPS VDS server rental"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Microsoft-Outlook",
+      "signals": [
+        "Outlook"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Devline-Camera",
+      "signals": [
+        "Devline"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "GitLab",
+      "signals": [
+        "GitLab"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Apache-Tomcat-9-0-20",
+      "signals": [
+        "Apache Tomcat/9.0.20"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "DDoS-Guard",
+      "signals": [
+        "DDoS-Guard"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Zimbra-Web-Client",
+      "signals": [
+        "Zimbra Web Client"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Linux-CentOS-Web",
+      "signals": [
+        "Welcome to CentOS"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "RedHat-Enterprise-Linux",
+      "signals": [
+        "Red Hat Enterprise Linux"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Nextcloud",
+      "signals": [
+        "Nextcloud"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "TL-WR841N-Router",
+      "signals": [
+        "TL-WR841N"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Grafana-Web",
+      "signals": [
+        "Grafana"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Roundcube-Webmail",
+      "signals": [
+        "Roundcube Webmail"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Portainer",
+      "signals": [
+        "Portainer"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Webif-Admin-Console",
+      "signals": [
+        "Webif&sup2; Administration Console"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Apache-Test-Page",
+      "signals": [
+        "Test Page for Apache Installation"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "React-App",
+      "signals": [
+        "React App"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "IPC",
+      "signals": [
+        "IPC"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "FASTPANEL2",
+      "signals": [
+        "FASTPANEL2"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "UTM",
+      "signals": [
+        "UTM"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "cPanel-Login-Web",
+      "signals": [
+        "cPanel Login"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Icecast-Stream-Web",
+      "signals": [
+        "Icecast Streaming Media Server"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "MDaemon-Webmail",
+      "signals": [
+        "MDaemon Webmail"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Outlook-Web-App",
+      "signals": [
+        "Outlook Web App"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "RT-GM-5-Router",
+      "signals": [
+        "RT-GM-5"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "WHM-Login",
+      "signals": [
+        "WHM Login"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "FreePBX-Voice-Switch",
+      "signals": [
+        "FreePBX"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "TrueConf-Serve",
+      "signals": [
+        "TrueConf Serve"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Laravel",
+      "signals": [
+        "Laravel"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "SoftEther-VPN",
+      "signals": [
+        "SoftEther VPN"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Prometheus-Server",
+      "signals": [
+        "Prometheus"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "SpaceWeb",
+      "signals": [
+        "SpaceWeb"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Microsoft-IIS-Web",
+      "signals": [
+        "Microsoft Internet I"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Ubiquitous-Router",
+      "signals": [
+        "Ubiquitous"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "phpMyAdmin-Web",
+      "signals": [
+        "phpMyAdmin"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "FastOperator-Web",
+      "signals": [
+        "FastOperator Web service"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "RT-GM-3-Router",
+      "signals": [
+        "RT-GM-3"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "PleskOnyx",
+      "signals": [
+        "PleskOnyx"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "OoklaServer",
+      "signals": [
+        "OoklaServer"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Synology-Storage",
+      "signals": [
+        "Synology"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "ownCloud-Server",
+      "signals": [
+        "ownCloud"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Testing-System",
+      "signals": [
+        "Система тестирования"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "3CX-Phone-System",
+      "signals": [
+        "3CX Phone"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "IP-Masnikov-DV",
+      "signals": [
+        "IP Masnikov D\\.V\\."
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "TL-WR940N-Router",
+      "signals": [
+        "TL-WR940N"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "BAS-IP",
+      "signals": [
+        "BAS-IP"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Welcome-ContinentNET",
+      "signals": [
+        "КонтинентNET"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "OLYMPOX",
+      "signals": [
+        "ОЛИМПОКС"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Carbon-Auth",
+      "signals": [
+        "Carbon Auth"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "nas4free-local-NAS",
+      "signals": [
+        "nas4free\\.local"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "UniFi-Network",
+      "signals": [
+        "UniFi Network"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Pritunl-Voice",
+      "signals": [
+        "Pritunl"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Domination-Web",
+      "signals": [
+        "Веб-сервер Domination"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "MinIO-Console",
+      "signals": [
+        "MinIO Console"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "RU-Crypto",
+      "signals": [
+        "ru-crypto"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Automarshall",
+      "signals": [
+        "Автомаршал \\:\\: Логин"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "OpenResty",
+      "signals": [
+        "OpenResty"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Vtorchermet-NLMK-Chernozemye",
+      "signals": [
+        "Вторчермет НЛМК Черноземье"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "SolarWinds-Web",
+      "signals": [
+        "SolarWinds"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "EdgeOS",
+      "signals": [
+        "EdgeOS"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Kyocera-Web",
+      "signals": [
+        "Kyocera"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Zabbix",
+      "signals": [
+        "Zabbix"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "VMware-Web",
+      "signals": [
+        "VMware"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "PowerMTA",
+      "signals": [
+        "PowerMTA"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Gedeon-Richter-Digital",
+      "signals": [
+        "Гедеон Рихтер Digital"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Keycloak-Web",
+      "signals": [
+        "Keycloak"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "UniFi-Video",
+      "signals": [
+        "UniFi Video"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Mobile-SMARTS-Server",
+      "signals": [
+        "Сервер Mobile SMARTS"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "VoIP-Gateway",
+      "signals": [
+        "VoIP Gateway"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "DIR-100-Router",
+      "signals": [
+        "DIR-100"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "impulse-CRM",
+      "signals": [
+        "impulse CRM"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "TL-WR941ND-Router",
+      "signals": [
+        "TL-WR941ND"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "PayKeeper",
+      "signals": [
+        "PayKeeper"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Grocery-Helper",
+      "signals": [
+        "Продуктовый помощник"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "TL-WR740N-Router",
+      "signals": [
+        "TL-WR740N"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "BigBlueButton-Web-Conference",
+      "signals": [
+        "BigBlueButton"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "DSL-2640U-Router",
+      "signals": [
+        "DSL-2640U"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Traefik-Web",
+      "signals": [
+        "Traefik"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "ONLYOFFICE",
+      "signals": [
+        "ONLYOFFICE"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Plesk-Panel-Rusonyx",
+      "signals": [
+        "Plesk Panel"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Plesk-Obsidian",
+      "signals": [
+        "Plesk Obsidian"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "DLink-USR-Router",
+      "signals": [
+        "Unified Services Router"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "RT-GM-4-Router",
+      "signals": [
+        "RT-GM-4"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Astra-Control-Panel",
+      "signals": [
+        "Astra Control Panel"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "OTLamp",
+      "signals": [
+        "OTLamp"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "USG-Router",
+      "signals": [
+        "USG"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "MW301R-Router",
+      "signals": [
+        "MW301R"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Citrix",
+      "signals": [
+        "Citrix"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "MikoPBX-Voice",
+      "signals": [
+        "MikoPBX"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "FG-ACE-IAD-4-GW-Router",
+      "signals": [
+        "FG-ACE-IAD-4-GW"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "DIR-300-Router",
+      "signals": [
+        "DIR-300"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "GeoRITM",
+      "signals": [
+        "GeoRITM"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Teltonika-SCADA-Router",
+      "signals": [
+        "Teltonika"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "TL-WR840N-Router",
+      "signals": [
+        "TL-WR840N"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Traccar",
+      "signals": [
+        "Traccar"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "DIR-620-Router",
+      "signals": [
+        "DIR-620"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Airflow-SCADA",
+      "signals": [
+        "Airflow"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "MailerQ",
+      "signals": [
+        "MailerQ"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "MiniDLNA",
+      "signals": [
+        "MiniDLNA"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "OpenWrt-LuCI",
+      "signals": [
+        "OpenWrt"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "LuCI",
+      "signals": [
+        "LuCI"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "TD-W8960N-Router",
+      "signals": [
+        "TD-W8960N"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Switch-Web-Login",
+      "signals": [
+        "Switch Web"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Prometius-Alertmanager",
+      "signals": [
+        "Alertmanager"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Check-Point-SSL",
+      "signals": [
+        "Check Point SSL"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "BEWARD-Camera",
+      "signals": [
+        "BEWARD"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "InnboxE80-Router",
+      "signals": [
+        "InnboxE80"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Cast-shell-remote",
+      "signals": [
+        "Cast-shell"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "MW325R-Router",
+      "signals": [
+        "MW325R"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Watcher-Monitor",
+      "signals": [
+        "Watcher"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "USG-FLEX-USG20-VPN",
+      "signals": [
+        "USG FLEX 50 (USG20-VPN)"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "DIR_300NRUB5-Router",
+      "signals": [
+        "DIR_300NRUB5"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "TL-WR842N-Router",
+      "signals": [
+        "TL-WR842N"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "MySQl-Database-Exporter",
+      "signals": [
+        "MySQLd exporter"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Symfony-Audio",
+      "signals": [
+        "Symfony"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "RTUx68V2-Router",
+      "signals": [
+        "RTUx68V2"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "ProCurve-Switch-2650",
+      "signals": [
+        "J4899B"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "NOVIcam-DVR",
+      "signals": [
+        "NOVIcam"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "ZPM-Software-2",
+      "signals": [
+        "ПО МНТ 2\\.0"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "SLC-Server-3",
+      "signals": [
+        "Сервер СЛК 3\\.0\\.31\\.11018"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "MW305R-Router",
+      "signals": [
+        "MW305R"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "DIR-300NRU-Router",
+      "signals": [
+        "DIR-300NRU"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "BIT-ATS-Auth",
+      "signals": [
+        "БИТ\\.АТС\\: Авторизация"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Jira-Project-Management",
+      "signals": [
+        "Jira"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "RK-Web-Monitoring",
+      "signals": [
+        "RK Web"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "TL-WDR3600-Router",
+      "signals": [
+        "TL-WDR3600"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "ELMA365-Router",
+      "signals": [
+        "ELMA365"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "DSL_2640NRU-Router",
+      "signals": [
+        "DSL_2640NRU"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "1C-Billing-CRM",
+      "signals": [
+        "1C\\:Enterprise"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "CRM-System",
+      "signals": [
+        "CRM"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Confluence-Web",
+      "signals": [
+        "Confluence"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Jupyter-Server",
+      "signals": [
+        "Jupyter"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "iBank-Web",
+      "signals": [
+        "iBank для Бизнеса"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "GlassFish-Jakarta-EE",
+      "signals": [
+        "GlassFish"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Django-Server",
+      "signals": [
+        "Django"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "City-Telecom-Router",
+      "signals": [
+        "Город-Телеком"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Check-Point-Mobile-Client",
+      "signals": [
+        "Check Point Mobile"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "News-Site",
+      "signals": [
+        "Новости"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "SKAT-Router",
+      "signals": [
+        "SKAT"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Zentyal-Router",
+      "signals": [
+        "Zentyal"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Joint-Stock-CO-DONENERGO",
+      "signals": [
+        "ДОНЭНЕРГО"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Windows-CE",
+      "signals": [
+        "Windows CE"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "NETGEAR-Router",
+      "signals": [
+        "NETGEAR"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Odoo-CRM",
+      "signals": [
+        "Odoo"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "RabbitMQ",
+      "signals": [
+        "RabbitMQ"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Data-WH-15",
+      "signals": [
+        "Server Warehouse 15"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Eng-Equip-Controler-KIO-2MS",
+      "signals": [
+        "КИО-2MS"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "TL-WR1045ND-Router",
+      "signals": [
+        "TL-WR1045ND"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "GoodLine-Router",
+      "signals": [
+        "GoodLine"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "EHCP-Router",
+      "signals": [
+        "EHCP"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Drone-CI",
+      "signals": [
+        "Drone CI"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "C530A-Router",
+      "signals": [
+        "C530A IP"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Car-With-Milage",
+      "signals": [
+        "Сайт по умолчанию"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "HP-OOB-Dev",
+      "signals": [
+        "HP Integrated Lights-Out"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Magnus-Billing",
+      "signals": [
+        "MagnusBilling"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "TELEOFIS-SCADA-Router",
+      "signals": [
+        "TELEOFIS"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "IRBIS64-Library",
+      "signals": [
+        "ИРБИС64\\+ Электронная библиотека"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Bolid-XML-RPC",
+      "signals": [
+        "Bolid XML RPC"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "TD-W8950N-Router",
+      "signals": [
+        "TD-W8950N"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Bitrix-Web",
+      "signals": [
+        "1С-Битрикс"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Blue-Iris-NVR",
+      "signals": [
+        "Blue Iris"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "TD-W8968-Router",
+      "signals": [
+        "TD-W8968"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Univention-Portal",
+      "signals": [
+        "Univention Portal"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "NBG6604-Router",
+      "signals": [
+        "NBG6604"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Optix-Kuban-Web",
+      "signals": [
+        "Оптикс кубань"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "DIR-825AC-Router",
+      "signals": [
+        "DIR-825AC"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "noVNC-VNC",
+      "signals": [
+        "noVNC"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "MeshCentral-Web",
+      "signals": [
+        "MeshCentral"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Internet-Radio",
+      "signals": [
+        "Интернет Радио"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "ONLYOFFICE-Web",
+      "signals": [
+        "ONLYOFFICE"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Cams-NVR-Generic",
+      "signals": [
+        "NVR"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Cams-DVR-Generic",
+      "signals": [
+        "DVR"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Cams-IP-Generic",
+      "signals": [
+        "Camera"
+      ],
+      "rule": "Rule"
+    },
+    {
+      "model": "Cams-Video-Generic",
+      "signals": [
+        "Video"
+      ],
+      "rule": "Rule"
+    }
+  ]
+}

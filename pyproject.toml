@@ -1,0 +1,52 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ah-puch"
+version = "2.0.0"
+description = "Modular target-assessment runtime with typed evidence pipelines"
+readme = "README.md"
+requires-python = ">=3.10"
+dynamic = ["dependencies"]
+
+[project.scripts]
+ah-puch = "engines.entry:main"
+
+[tool.setuptools]
+include-package-data = false
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
+
+[tool.setuptools.packages.find]
+where = [".", "vendor"]
+include = ["engines*", "ahpuch_modules*", "config*", "data*"]
+
+[tool.setuptools.package-data]
+ahpuch_modules = ["config/*.json"]
+config = ["*.json", "*.sha256", "*.tsv"]
+data = [
+  "advisories/*",
+  "advisories/**/*",
+  "cameras/**/*",
+  "knowledge/**/*",
+  "knowledge/reference-corpus/.gitignore",
+  "payloads/*",
+  "DICTIONARY_MANIFEST.tsv",
+  "DICTIONARY_PROVENANCE_OVERRIDES.tsv",
+  "REFERENCE_CORPUS_MANIFEST.tsv",
+  "REFERENCE_CORPUS_SUMMARY.json",
+  "wordlists/*.txt",
+  "wordlists/categories/*.txt",
+]
+
+[tool.setuptools.exclude-package-data]
+# Plaintext SSH audit corpora remain in the private source release. Standard
+# wheel installers may apply the process umask and turn them into 0644 files;
+# the wheel therefore requires explicit operator-supplied paths for this gate.
+data = ["credentials/ssh-audit-users.txt", "credentials/ssh-audit-passwords.txt"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = [".", "vendor"]

@@ -1,0 +1,40 @@
+{
+  "corpora": {
+    "advisory": {
+      "bytes": 112401816,
+      "files": 98112,
+      "kinds": {
+        "binary-or-opaque-data": 3,
+        "executable-material-data": 1,
+        "text": 98108
+      },
+      "path": "data/advisories/reference-corpus",
+      "sha256_rows": 98112,
+      "source_root": "ah-puch-private-reference://advisory"
+    },
+    "knowledge": {
+      "bytes": 9474131,
+      "files": 3793,
+      "kinds": {
+        "binary-or-opaque-data": 78,
+        "executable-material-data": 5,
+        "text": 3710
+      },
+      "path": "data/knowledge/reference-corpus",
+      "sha256_rows": 3793,
+      "source_root": "ah-puch-private-reference://knowledge"
+    }
+  },
+  "generated_files_excluded": {
+    "directory_names": [
+      ".git",
+      "__pycache__"
+    ],
+    "suffixes": [
+      ".pyc",
+      ".pyo"
+    ]
+  },
+  "manifest": "data/REFERENCE_CORPUS_MANIFEST.tsv",
+  "schema_version": 1
+}

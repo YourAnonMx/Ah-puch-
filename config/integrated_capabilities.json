@@ -1,0 +1,540 @@
+{
+  "schema_version": 1,
+  "policy": {
+    "ai_runtime": false,
+    "target_run_installation": false,
+    "poc_execution": false,
+    "independent_methods_are_additive": true,
+    "all_results_flow_through_typed_artifact_bus": true
+  },
+  "integrations": {
+    "complete-assessment": {
+      "profile": "deep",
+      "pipeline_mode": "all",
+      "active": true,
+      "catalog_ids": [
+        "138"
+      ],
+      "blocks": [
+        "00-input-target",
+        "01-discovery",
+        "02-dns",
+        "03-network",
+        "04-http",
+        "05-history",
+        "06-crawl",
+        "07-content",
+        "08-js-api-parameters",
+        "09-fingerprint-waf-tls",
+        "10-assessment",
+        "11-local-cloud",
+        "12-device-ics",
+        "13-normalization",
+        "14-fan-in",
+        "15-convergence",
+        "16-reporting",
+        "17-seal"
+      ],
+      "native_stages": [
+        "recon-dns",
+        "http-inventory",
+        "web-fanout",
+        "tls-inventory",
+        "network-profile",
+        "device",
+        "device-fingerprint",
+        "device-technology",
+        "template-assessment",
+        "web-server-assessment",
+        "secondary-web-audit",
+        "proxy-passive",
+        "proxy-active",
+        "parameter-validation"
+      ],
+      "contact": "active-gated",
+      "outputs": [
+        "all typed artifacts",
+        "TXT report",
+        "JSON/JSONL evidence",
+        "checksums"
+      ]
+    },
+    "complete-web-evidence": {
+      "profile": "deep",
+      "pipeline_mode": "all",
+      "active": true,
+      "catalog_ids": [
+        "136"
+      ],
+      "blocks": [
+        "00-input-target",
+        "01-discovery",
+        "02-dns",
+        "03-network",
+        "04-http",
+        "05-history",
+        "06-crawl",
+        "07-content",
+        "08-js-api-parameters",
+        "09-fingerprint-waf-tls",
+        "10-assessment",
+        "13-normalization",
+        "14-fan-in",
+        "15-convergence",
+        "16-reporting",
+        "17-seal"
+      ],
+      "native_stages": [
+        "recon-dns",
+        "http-inventory",
+        "web-fanout",
+        "tls-inventory",
+        "network-profile",
+        "template-assessment",
+        "web-server-assessment",
+        "secondary-web-audit",
+        "proxy-passive",
+        "proxy-active",
+        "parameter-validation"
+      ],
+      "contact": "active-gated",
+      "outputs": [
+        "url",
+        "path",
+        "parameter",
+        "file",
+        "domain",
+        "certificate",
+        "banner",
+        "email",
+        "social",
+        "finding"
+      ]
+    },
+    "subdomain-infrastructure": {
+      "profile": "deep",
+      "pipeline_mode": "all",
+      "active": true,
+      "catalog_ids": [
+        "135"
+      ],
+      "blocks": [
+        "00-input-target",
+        "01-discovery",
+        "02-dns",
+        "03-network",
+        "04-http",
+        "09-fingerprint-waf-tls",
+        "10-assessment",
+        "11-local-cloud",
+        "13-normalization",
+        "14-fan-in",
+        "15-convergence",
+        "16-reporting",
+        "17-seal"
+      ],
+      "native_stages": [
+        "recon-dns",
+        "http-inventory",
+        "tls-inventory",
+        "network-profile",
+        "template-assessment"
+      ],
+      "contact": "passive-plus-active-gated",
+      "outputs": [
+        "host",
+        "ip",
+        "service",
+        "technology",
+        "finding"
+      ]
+    },
+    "range-http-verification": {
+      "profile": "deep",
+      "pipeline_mode": "all",
+      "active": true,
+      "catalog_ids": [
+        "9",
+        "22",
+        "42",
+        "43",
+        "44"
+      ],
+      "blocks": [
+        "00-input-target",
+        "03-network",
+        "04-http",
+        "07-content",
+        "09-fingerprint-waf-tls",
+        "13-normalization",
+        "14-fan-in",
+        "15-convergence",
+        "16-reporting",
+        "17-seal"
+      ],
+      "native_stages": [
+        "network-profile",
+        "http-inventory",
+        "web-fanout",
+        "tls-inventory"
+      ],
+      "contact": "active-gated",
+      "outputs": [
+        "service",
+        "url",
+        "path",
+        "status-200",
+        "fingerprint"
+      ]
+    },
+    "industrial-protocol-followup": {
+      "profile": "deep",
+      "pipeline_mode": "all",
+      "active": true,
+      "catalog_ids": [
+        "9",
+        "22",
+        "24",
+        "42",
+        "43",
+        "44",
+        "139",
+        "140",
+        "141",
+        "142",
+        "143",
+        "144",
+        "145",
+        "146",
+        "147"
+      ],
+      "blocks": [
+        "00-input-target",
+        "03-network",
+        "04-http",
+        "09-fingerprint-waf-tls",
+        "12-device-ics",
+        "13-normalization",
+        "14-fan-in",
+        "15-convergence",
+        "16-reporting",
+        "17-seal"
+      ],
+      "native_stages": [
+        "network-profile",
+        "http-inventory",
+        "tls-inventory",
+        "device",
+        "device-fingerprint",
+        "device-technology"
+      ],
+      "contact": "active-gated",
+      "outputs": [
+        "indicator",
+        "service",
+        "technology",
+        "finding"
+      ]
+    },
+    "device-inventory": {
+      "profile": "deep",
+      "pipeline_mode": "all",
+      "active": true,
+      "catalog_ids": [
+        "9",
+        "22",
+        "42",
+        "43",
+        "44",
+        "145",
+        "146",
+        "147"
+      ],
+      "blocks": [
+        "00-input-target",
+        "03-network",
+        "04-http",
+        "09-fingerprint-waf-tls",
+        "12-device-ics",
+        "13-normalization",
+        "14-fan-in",
+        "15-convergence",
+        "16-reporting",
+        "17-seal"
+      ],
+      "native_stages": [
+        "network-profile",
+        "http-inventory",
+        "tls-inventory",
+        "device",
+        "device-fingerprint",
+        "device-technology"
+      ],
+      "contact": "active-gated",
+      "outputs": [
+        "service",
+        "device",
+        "fingerprint",
+        "technology",
+        "resume"
+      ]
+    },
+    "ssh-credential-audit": {
+      "profile": "deep",
+      "pipeline_mode": "all",
+      "active": true,
+      "catalog_ids": [],
+      "blocks": [
+        "00-input-target",
+        "03-network",
+        "10-assessment",
+        "13-normalization",
+        "16-reporting",
+        "17-seal"
+      ],
+      "native_stages": [],
+      "contact": "credential-audit-explicit",
+      "outputs": [
+        "ssh endpoint",
+        "authentication state",
+        "connection-test"
+      ]
+    },
+    "dictionary-corpus": {
+      "profile": "deep",
+      "pipeline_mode": "all",
+      "active": false,
+      "catalog_ids": [
+        "128"
+      ],
+      "blocks": [
+        "00-input-target",
+        "07-content",
+        "13-normalization",
+        "16-reporting",
+        "17-seal"
+      ],
+      "native_stages": [],
+      "contact": "local",
+      "outputs": [
+        "typed dictionary",
+        "line count",
+        "sha256"
+      ]
+    },
+    "advisory-correlation": {
+      "profile": "deep",
+      "pipeline_mode": "all",
+      "active": false,
+      "catalog_ids": [
+        "131",
+        "177"
+      ],
+      "blocks": [
+        "00-input-target",
+        "09-fingerprint-waf-tls",
+        "10-assessment",
+        "11-local-cloud",
+        "13-normalization",
+        "14-fan-in",
+        "16-reporting",
+        "17-seal"
+      ],
+      "native_stages": [
+        "recon-dns",
+        "http-inventory",
+        "tls-inventory"
+      ],
+      "contact": "local",
+      "outputs": [
+        "advisory",
+        "reference",
+        "product match",
+        "offline index"
+      ]
+    },
+    "knowledge-index": {
+      "profile": "deep",
+      "pipeline_mode": "all",
+      "active": false,
+      "catalog_ids": [],
+      "blocks": [
+        "00-input-target",
+        "10-assessment",
+        "11-local-cloud",
+        "13-normalization",
+        "16-reporting",
+        "17-seal"
+      ],
+      "native_stages": [],
+      "contact": "local",
+      "outputs": [
+        "knowledge index",
+        "topic",
+        "reference",
+        "provenance"
+      ]
+    },
+    "intelligence-catalog": {
+      "profile": "deep",
+      "pipeline_mode": "all",
+      "active": true,
+      "catalog_ids": [
+        "138"
+      ],
+      "blocks": [
+        "00-input-target",
+        "01-discovery",
+        "02-dns",
+        "03-network",
+        "04-http",
+        "05-history",
+        "06-crawl",
+        "07-content",
+        "08-js-api-parameters",
+        "09-fingerprint-waf-tls",
+        "10-assessment",
+        "11-local-cloud",
+        "12-device-ics",
+        "13-normalization",
+        "14-fan-in",
+        "15-convergence",
+        "16-reporting",
+        "17-seal"
+      ],
+      "native_stages": [
+        "recon-dns",
+        "http-inventory",
+        "web-fanout",
+        "tls-inventory",
+        "network-profile",
+        "device",
+        "device-fingerprint",
+        "device-technology",
+        "template-assessment",
+        "web-server-assessment",
+        "secondary-web-audit",
+        "proxy-passive",
+        "proxy-active",
+        "parameter-validation"
+      ],
+      "contact": "per-method",
+      "outputs": [
+        "passive findings",
+        "active findings",
+        "technology",
+        "fingerprint",
+        "report"
+      ]
+    }
+  },
+  "integrated_components": {
+    "web-evidence-projection": {
+      "source_type": "imported capability material",
+      "revision": "78c5e8d3d310ca561e9c6b57fba6af8d7a014af6",
+      "covered": [
+        "bounded crawl",
+        "URL/file/domain extraction",
+        "DNS/certificate enrichment",
+        "email/social/banner extraction",
+        "injection-point queue",
+        "HTTP/Nmap/FFUF/Nikto/access-control follow-up"
+      ]
+    },
+    "ssh-audit": {
+      "source_type": "imported legacy capability material",
+      "revision": "9ceb3cfdadafcc32c1b2ea04e4cef01c1670d4c8",
+      "covered": [
+        "single-host and discovered SSH endpoints",
+        "candidate identity/password dictionaries",
+        "bounded candidate attempts",
+        "explicit active credential-audit gate",
+        "SSH connection verification",
+        "redacted authentication evidence"
+      ]
+    },
+    "range-path-verifier": {
+      "source_type": "imported capability material",
+      "revision": "8cde761f0d2ea4c4a619096040c7a85ff67fcfec",
+      "covered": [
+        "range HTTP discovery",
+        "82 path corpus",
+        "HTTP status verification",
+        "200-only URL output"
+      ]
+    },
+    "subdomain-infrastructure-enrichment": {
+      "source_type": "imported capability material",
+      "revision": "57433ae3708e44290c01ab03598e35aec51230b0",
+      "covered": [
+        "subdomain discovery",
+        "IP attribution",
+        "Nmap vulnerability scripts"
+      ]
+    },
+    "industrial-protocol-followup": {
+      "source_type": "imported capability material",
+      "revision": "171eabc2239d86c582c81b074caa4d33fd401e40",
+      "covered": [
+        "modbus/scada/siemens/bacnet keyword search",
+        "Nmap protocol-script follow-up",
+        "10-second bounded execution"
+      ]
+    },
+    "directory-dictionary-corpus": {
+      "source_type": "imported capability material",
+      "revision": "a9ef57eba504f9313027e60154a33adf6f61c626",
+      "covered": [
+        "micro/short/long/all source selection",
+        "cleaning rules",
+        "external-sort deduplication",
+        "typed directory dictionary output"
+      ]
+    },
+    "vulnerability-reference-corpus": {
+      "source_type": "imported capability material",
+      "revision": "2a7ade677c38c1aed000a99c25cc586793093a13",
+      "covered": [
+        "Markdown advisory corpus indexing",
+        "reference extraction",
+        "hot/blacklist source preservation",
+        "offline product correlation",
+        "PoC reference catalog without execution"
+      ]
+    },
+    "intelligence-catalog": {
+      "source_type": "imported capability material",
+      "revision": "f51c0442802f1a557220943c72fb2584c7c99fa4",
+      "covered": [
+        "147 module catalog",
+        "passive and explicit-active classes",
+        "optional API modules",
+        "module options",
+        "native report lifecycle"
+      ]
+    },
+    "device-surface-inventory": {
+      "source_type": "desktop capability archive",
+      "revision": "2db8357f2c209cfe3f689820519d4f0b89399ccd50027a264c168858a335b8f1",
+      "covered": [
+        "TCP/UDP port corpus",
+        "335 normalized plus preserved source fingerprints",
+        "subnet chunks",
+        "resume/checkpoint",
+        "HTTP cookies",
+        "WhatWeb enrichment",
+        "identified/unknown inventory"
+      ]
+    },
+    "assessment-orchestration": {
+      "source_type": "desktop capability archive",
+      "revision": "e2f7761af964e625450470b3b876fd1671e59abc88805826953dbbdbf33ed95e",
+      "covered": [
+        "baseline/full/deep orchestration",
+        "DNS/httpx/dirsearch/katana/nikto/testssl/nmap/nuclei/wapiti/ZAP/SQLMap",
+        "normalized inventory",
+        "checksums and verification"
+      ]
+    }
+  }
+}

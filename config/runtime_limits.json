@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "policy": {
+    "name": "ah-puch-safe-runtime",
+    "contact_requires_explicit_target": true,
+    "target_run_installation": false,
+    "private_artifacts_mode": "0600",
+    "run_directory_mode": "0700",
+    "truncate_outputs": true,
+    "atomic_state_writes": true
+  },
+  "defaults": {
+    "max_targets": 1024,
+    "max_requests": 10000,
+    "max_results": 20000,
+    "max_response_bytes": 67108864,
+    "max_output_bytes": 20971520,
+    "max_executions": 4096,
+    "max_concurrency": 64,
+    "max_elapsed_seconds": 86400
+  },
+  "hard_caps": {
+    "max_targets": 10000,
+    "max_requests": 1000000,
+    "max_results": 1000000,
+    "max_response_bytes": 1073741824,
+    "max_output_bytes": 134217728,
+    "max_executions": 100000,
+    "max_concurrency": 64,
+    "max_elapsed_seconds": 604800
+  }
+}

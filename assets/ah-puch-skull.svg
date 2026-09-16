@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 640" role="img" aria-labelledby="title desc">
+  <title id="title">Ah Puch skull mark</title>
+  <desc id="desc">A cyan and magenta skull emblem on a dark geometric background.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#07111f"/>
+      <stop offset="1" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="bone" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e8fbff"/>
+      <stop offset="0.52" stop-color="#8ce8ef"/>
+      <stop offset="1" stop-color="#48a7ba"/>
+    </linearGradient>
+    <linearGradient id="edge" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#11d9e6"/>
+      <stop offset="1" stop-color="#ff4fc3"/>
+    </linearGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" fill="none" stroke="#8ce8ef" stroke-opacity=".08"/>
+    </pattern>
+  </defs>
+  <rect width="960" height="640" rx="40" fill="#07111f"/>
+  <rect x="24" y="24" width="912" height="592" rx="28" fill="url(#grid)" stroke="#48a7ba" stroke-opacity=".28" stroke-width="2"/>
+  <path d="M110 500 246 364M850 500 714 364M110 140l136 136M850 140 714 276" fill="none" stroke="url(#edge)" stroke-linecap="round" stroke-width="8" opacity=".75"/>
+  <g stroke="url(#edge)" stroke-width="9" stroke-linejoin="round">
+    <path d="M480 118c-132 0-224 91-224 218 0 94 49 155 117 181v47c0 22 18 40 40 40h134c22 0 40-18 40-40v-47c68-26 117-87 117-181 0-127-92-218-224-218Z" fill="#b8f0f1"/>
+    <path d="M350 502h260v62c0 20-16 36-36 36H386c-20 0-36-16-36-36v-62Z" fill="#5bb7c5"/>
+    <path d="m334 301 78-42 68 34-24 73-78 10-44-38ZM626 301l-78-42-68 34 24 73 78 10 44-38Z" fill="#081321" stroke="#11d9e6"/>
+    <path d="m480 306 31 78-31 35-31-35 31-78Z" fill="#081321" stroke="#ff4fc3"/>
+    <rect x="360" y="440" width="240" height="16" rx="8" fill="#07111f" stroke="none"/>
+    <rect x="390" y="440" width="11" height="55" fill="#07111f" stroke="none"/>
+    <rect x="438" y="440" width="11" height="55" fill="#07111f" stroke="none"/>
+    <rect x="486" y="440" width="11" height="55" fill="#07111f" stroke="none"/>
+    <rect x="534" y="440" width="11" height="55" fill="#07111f" stroke="none"/>
+    <rect x="582" y="440" width="11" height="55" fill="#07111f" stroke="none"/>
+  </g>
+  <circle cx="480" cy="102" r="10" fill="#ff4fc3"/>
+  <circle cx="480" cy="538" r="8" fill="#11d9e6"/>
+</svg>

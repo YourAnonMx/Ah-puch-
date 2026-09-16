@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+SOURCE="${BASH_SOURCE[0]}"
+LAUNCH_DIR="$(cd -- "$(dirname -- "$SOURCE")" && pwd -P)"
+while [[ -h "$SOURCE" ]]; do
+    SOURCE_DIR="$(cd -- "$(dirname -- "$SOURCE")" && pwd -P)"
+    SOURCE="$(readlink -- "$SOURCE")"
+    [[ "$SOURCE" = /* ]] || SOURCE="$SOURCE_DIR/$SOURCE"
+done
+ROOT_DIR="$(cd -- "$(dirname -- "$SOURCE")" && pwd -P)"
+if [[ -n "${AH_PUCH_BIN_DIR:-}" ]]; then
+    BIN_DIR="$AH_PUCH_BIN_DIR"
+elif [[ "$LAUNCH_DIR" != "$ROOT_DIR" ]]; then
+    BIN_DIR="$LAUNCH_DIR"
+else
+    BIN_DIR="$HOME/.local/bin"
+fi
+case ":${PATH:-}:" in
+    *":$BIN_DIR:"*) ;;
+    *) export PATH="$BIN_DIR:${PATH:-}" ;;
+esac
+PYTHON_BIN="${AH_PUCH_PYTHON:-$ROOT_DIR/.venv/bin/python3}"
+[[ -x "$PYTHON_BIN" ]] || PYTHON_BIN="python3"
+exec "$PYTHON_BIN" "$ROOT_DIR/engines/entry.py" "$@"

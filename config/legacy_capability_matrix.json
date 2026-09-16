@@ -1,0 +1,1095 @@
+{
+  "schema_version": 1,
+  "core_source_count": 10,
+  "policy": {
+    "source_shells_are_not_invoked": true,
+    "operational_functions_only": true,
+    "presentation_helpers_are_not_runtime_capabilities": true,
+    "all_adapters_are_target_bounded": true,
+    "poc_and_exploit_execution": false,
+    "implicit_credential_guessing": false
+  },
+  "sources": {
+    "surface": {
+      "label": "Surface catalog compatibility",
+      "root": "project",
+      "source_paths": [
+        "vendor/ahpuch_modules/core/runner.py",
+        "vendor/ahpuch_modules/config/modules.json"
+      ],
+      "functions": [
+        {
+          "id": "surface.catalog_loader",
+          "source": "vendor/ahpuch_modules/core/runner.py::catalog_loader",
+          "adapter": "catalog",
+          "canonical_capability": "intelligence-catalog",
+          "evidence": [
+            "operator-selected-module"
+          ],
+          "contact": "per-module-gated",
+          "parallel_group": "catalog",
+          "outputs": [
+            "module-catalog"
+          ]
+        },
+        {
+          "id": "surface.execute_script",
+          "source": "vendor/ahpuch_modules/core/runner.py::execute_script",
+          "adapter": "catalog",
+          "canonical_capability": "intelligence-catalog",
+          "evidence": [
+            "target-bound-input"
+          ],
+          "contact": "per-module-gated",
+          "parallel_group": "catalog",
+          "outputs": [
+            "finding",
+            "report"
+          ]
+        },
+        {
+          "id": "surface.run_modules",
+          "source": "vendor/ahpuch_modules/core/runner.py::run_modules",
+          "adapter": "catalog",
+          "canonical_capability": "intelligence-catalog",
+          "evidence": [
+            "target-bound-input"
+          ],
+          "contact": "per-module-gated",
+          "parallel_group": "catalog",
+          "outputs": [
+            "finding",
+            "report"
+          ]
+        },
+        {
+          "id": "surface.parse_output_severity",
+          "source": "vendor/ahpuch_modules/core/runner.py::parse_output_severity",
+          "adapter": "evidence",
+          "canonical_capability": "intelligence-catalog",
+          "evidence": [
+            "module-output"
+          ],
+          "contact": "local",
+          "parallel_group": "normalization",
+          "outputs": [
+            "finding"
+          ]
+        },
+        {
+          "id": "surface.module_options",
+          "source": "vendor/ahpuch_modules/core/runner.py::module_options",
+          "adapter": "catalog",
+          "canonical_capability": "intelligence-catalog",
+          "evidence": [
+            "operator-options"
+          ],
+          "contact": "local",
+          "parallel_group": "planning",
+          "outputs": [
+            "execution-plan"
+          ]
+        },
+        {
+          "id": "surface.report_generation",
+          "source": "vendor/ahpuch_modules/core/runner.py::report_generation",
+          "adapter": "evidence",
+          "canonical_capability": "intelligence-catalog",
+          "evidence": [
+            "module-output"
+          ],
+          "contact": "local",
+          "parallel_group": "reporting",
+          "outputs": [
+            "report",
+            "checksums"
+          ]
+        }
+      ]
+    },
+    "discovery": {
+      "label": "Discovery sequence compatibility",
+      "root": "project",
+      "source_paths": [
+        "engines/recon_core.py",
+        "engines/network_inventory_runtime.py",
+        "engines/web_chain_runtime.py"
+      ],
+      "functions": [
+        {
+          "id": "discovery.module_recon",
+          "source": "engines/recon_core.py::module_recon",
+          "adapter": "discovery",
+          "canonical_capability": "subdomain-infrastructure",
+          "evidence": [
+            "target"
+          ],
+          "contact": "passive-plus-active-gated",
+          "parallel_group": "discovery",
+          "outputs": [
+            "host",
+            "url",
+            "service"
+          ]
+        },
+        {
+          "id": "discovery.module_dns",
+          "source": "engines/recon_core.py::module_dns",
+          "adapter": "discovery",
+          "canonical_capability": "subdomain-infrastructure",
+          "evidence": [
+            "host-or-domain"
+          ],
+          "contact": "bounded",
+          "parallel_group": "dns",
+          "outputs": [
+            "host",
+            "ip",
+            "record"
+          ]
+        },
+        {
+          "id": "discovery.module_httpx_deep",
+          "source": "engines/recon_core.py::module_httpx_deep",
+          "adapter": "web-evidence",
+          "canonical_capability": "complete-web-evidence",
+          "evidence": [
+            "verified-http-origin"
+          ],
+          "contact": "active-gated",
+          "parallel_group": "http",
+          "outputs": [
+            "origin",
+            "technology",
+            "fingerprint"
+          ]
+        },
+        {
+          "id": "discovery.module_dirsearch",
+          "source": "engines/recon_core.py::module_dirsearch",
+          "adapter": "web-evidence",
+          "canonical_capability": "complete-web-evidence",
+          "evidence": [
+            "verified-http-origin",
+            "directory-dictionary"
+          ],
+          "contact": "active-gated",
+          "parallel_group": "content",
+          "outputs": [
+            "path",
+            "url"
+          ]
+        },
+        {
+          "id": "discovery.module_katana",
+          "source": "engines/recon_core.py::module_katana",
+          "adapter": "web-evidence",
+          "canonical_capability": "complete-web-evidence",
+          "evidence": [
+            "verified-http-origin"
+          ],
+          "contact": "active-gated",
+          "parallel_group": "crawl",
+          "outputs": [
+            "url",
+            "endpoint"
+          ]
+        },
+        {
+          "id": "discovery.module_nikto",
+          "source": "engines/recon_core.py::module_nikto",
+          "adapter": "web-evidence",
+          "canonical_capability": "complete-web-evidence",
+          "evidence": [
+            "verified-http-origin"
+          ],
+          "contact": "active-gated",
+          "parallel_group": "assessment",
+          "outputs": [
+            "finding",
+            "report"
+          ]
+        },
+        {
+          "id": "discovery.module_tls",
+          "source": "engines/recon_core.py::module_tls",
+          "adapter": "web-evidence",
+          "canonical_capability": "complete-web-evidence",
+          "evidence": [
+            "verified-https-origin"
+          ],
+          "contact": "active-gated",
+          "parallel_group": "tls",
+          "outputs": [
+            "certificate",
+            "finding"
+          ]
+        },
+        {
+          "id": "discovery.module_nmap",
+          "source": "engines/recon_core.py::module_nmap",
+          "adapter": "discovery",
+          "canonical_capability": "subdomain-infrastructure",
+          "evidence": [
+            "concrete-host-or-service"
+          ],
+          "contact": "active-gated",
+          "parallel_group": "network",
+          "outputs": [
+            "service",
+            "technology",
+            "finding"
+          ]
+        },
+        {
+          "id": "discovery.module_nuclei",
+          "source": "engines/recon_core.py::module_nuclei",
+          "adapter": "web-evidence",
+          "canonical_capability": "complete-assessment",
+          "evidence": [
+            "verified-http-origin"
+          ],
+          "contact": "active-gated",
+          "parallel_group": "assessment",
+          "outputs": [
+            "finding"
+          ]
+        },
+        {
+          "id": "discovery.module_wapiti",
+          "source": "engines/recon_core.py::module_wapiti",
+          "adapter": "web-evidence",
+          "canonical_capability": "complete-assessment",
+          "evidence": [
+            "verified-http-origin"
+          ],
+          "contact": "active-gated",
+          "parallel_group": "assessment",
+          "outputs": [
+            "finding",
+            "report"
+          ]
+        },
+        {
+          "id": "discovery.module_zap",
+          "source": "engines/recon_core.py::module_zap",
+          "adapter": "web-evidence",
+          "canonical_capability": "complete-assessment",
+          "evidence": [
+            "verified-http-origin"
+          ],
+          "contact": "active-gated",
+          "parallel_group": "assessment",
+          "outputs": [
+            "finding",
+            "report"
+          ]
+        },
+        {
+          "id": "discovery.module_sqlmap",
+          "source": "engines/recon_core.py::module_sqlmap",
+          "adapter": "web-evidence",
+          "canonical_capability": "complete-web-evidence",
+          "evidence": [
+            "verified-parameterized-url"
+          ],
+          "contact": "intrusive-explicit",
+          "parallel_group": "parameter-validation",
+          "outputs": [
+            "finding",
+            "report"
+          ]
+        },
+        {
+          "id": "discovery.profile_sequence",
+          "source": "engines/recon_core.py::profile_sequence",
+          "adapter": "evidence",
+          "canonical_capability": "complete-assessment",
+          "evidence": [
+            "operator-selected-profile"
+          ],
+          "contact": "active-gated",
+          "parallel_group": "orchestration",
+          "outputs": [
+            "execution-plan",
+            "report"
+          ]
+        },
+        {
+          "id": "discovery.queue_builders",
+          "source": "engines/recon_core.py::queue_builders",
+          "adapter": "evidence",
+          "canonical_capability": "complete-assessment",
+          "evidence": [
+            "local-artifacts"
+          ],
+          "contact": "local",
+          "parallel_group": "normalization",
+          "outputs": [
+            "queue",
+            "priority"
+          ]
+        }
+      ]
+    },
+    "dictionary": {
+      "label": "Dictionary corpus compatibility",
+      "root": "project",
+      "source_paths": [
+        "engines/dictionary_runtime.py",
+        "data/wordlists/web-micro.txt",
+        "data/wordlists/web-short.txt"
+      ],
+      "functions": [
+        {
+          "id": "dictionary.build_all",
+          "source": "engines/dictionary_runtime.py::build_all",
+          "adapter": "dictionary",
+          "canonical_capability": "dictionary-corpus",
+          "evidence": [
+            "local-dictionary-source"
+          ],
+          "contact": "local",
+          "parallel_group": "dictionary",
+          "outputs": [
+            "typed-dictionary"
+          ]
+        },
+        {
+          "id": "dictionary.build_short",
+          "source": "engines/dictionary_runtime.py::build_short",
+          "adapter": "dictionary",
+          "canonical_capability": "dictionary-corpus",
+          "evidence": [
+            "local-dictionary-source"
+          ],
+          "contact": "local",
+          "parallel_group": "dictionary",
+          "outputs": [
+            "typed-dictionary"
+          ]
+        },
+        {
+          "id": "dictionary.clean_lines",
+          "source": "engines/dictionary_runtime.py::clean_lines",
+          "adapter": "dictionary",
+          "canonical_capability": "dictionary-corpus",
+          "evidence": [
+            "local-dictionary-source"
+          ],
+          "contact": "local",
+          "parallel_group": "dictionary",
+          "outputs": [
+            "filtered-entries"
+          ]
+        },
+        {
+          "id": "dictionary.deduplicate",
+          "source": "engines/dictionary_runtime.py::deduplicate",
+          "adapter": "dictionary",
+          "canonical_capability": "dictionary-corpus",
+          "evidence": [
+            "filtered-entries"
+          ],
+          "contact": "local",
+          "parallel_group": "dictionary",
+          "outputs": [
+            "sha256",
+            "line-count"
+          ]
+        },
+        {
+          "id": "dictionary.tier_selection",
+          "source": "engines/dictionary_runtime.py::tier_selection",
+          "adapter": "dictionary",
+          "canonical_capability": "dictionary-corpus",
+          "evidence": [
+            "operator-selected-tier"
+          ],
+          "contact": "local",
+          "parallel_group": "planning",
+          "outputs": [
+            "execution-plan"
+          ]
+        }
+      ]
+    },
+    "knowledge": {
+      "label": "Knowledge index compatibility",
+      "root": "project",
+      "source_paths": [
+        "engines/integrated_capability_runtime.py",
+        "docs/INTEGRATED_CAPABILITY_MATRIX.md",
+        "data/knowledge/reference-corpus",
+        "data/REFERENCE_CORPUS_MANIFEST.tsv"
+      ],
+      "functions": [
+        {
+          "id": "knowledge.technique_index",
+          "source": "engines/integrated_capability_runtime.py::technique_index",
+          "adapter": "knowledge",
+          "canonical_capability": "knowledge-index",
+          "evidence": [
+            "local-notebook"
+          ],
+          "contact": "local",
+          "parallel_group": "knowledge",
+          "outputs": [
+            "knowledge-index",
+            "topics"
+          ]
+        },
+        {
+          "id": "knowledge.reference_catalog",
+          "source": "engines/integrated_capability_runtime.py::reference_catalog",
+          "adapter": "knowledge",
+          "canonical_capability": "knowledge-index",
+          "evidence": [
+            "local-notebook"
+          ],
+          "contact": "local",
+          "parallel_group": "knowledge",
+          "outputs": [
+            "reference"
+          ]
+        },
+        {
+          "id": "knowledge.ttp_navigation",
+          "source": "engines/integrated_capability_runtime.py::ttp_navigation",
+          "adapter": "knowledge",
+          "canonical_capability": "knowledge-index",
+          "evidence": [
+            "local-notebook"
+          ],
+          "contact": "local",
+          "parallel_group": "knowledge",
+          "outputs": [
+            "topic",
+            "report"
+          ]
+        },
+        {
+          "id": "knowledge.safe_content_filter",
+          "source": "engines/integrated_capability_runtime.py::safe_content_filter",
+          "adapter": "knowledge",
+          "canonical_capability": "knowledge-index",
+          "evidence": [
+            "local-notebook"
+          ],
+          "contact": "local",
+          "parallel_group": "knowledge",
+          "outputs": [
+            "provenance",
+            "redaction-policy"
+          ]
+        }
+      ]
+    },
+    "advisory": {
+      "label": "Advisory correlation compatibility",
+      "root": "project",
+      "source_paths": [
+        "engines/integrated_capability_runtime.py",
+        "data/advisories",
+        "data/advisories/reference-corpus",
+        "data/REFERENCE_CORPUS_MANIFEST.tsv"
+      ],
+      "functions": [
+        {
+          "id": "advisory.collect_metadata",
+          "source": "engines/integrated_capability_runtime.py::collect_metadata",
+          "adapter": "offline-advisory",
+          "canonical_capability": "advisory-correlation",
+          "evidence": [
+            "local-advisory-corpus"
+          ],
+          "contact": "local",
+          "parallel_group": "advisory",
+          "outputs": [
+            "advisory",
+            "reference"
+          ]
+        },
+        {
+          "id": "advisory.extract_references",
+          "source": "engines/integrated_capability_runtime.py::extract_references",
+          "adapter": "offline-advisory",
+          "canonical_capability": "advisory-correlation",
+          "evidence": [
+            "local-advisory-corpus"
+          ],
+          "contact": "local",
+          "parallel_group": "advisory",
+          "outputs": [
+            "reference"
+          ]
+        },
+        {
+          "id": "advisory.hot_list",
+          "source": "engines/integrated_capability_runtime.py::hot_list",
+          "adapter": "offline-advisory",
+          "canonical_capability": "advisory-correlation",
+          "evidence": [
+            "local-advisory-corpus"
+          ],
+          "contact": "local",
+          "parallel_group": "advisory",
+          "outputs": [
+            "advisory"
+          ]
+        },
+        {
+          "id": "advisory.blacklist_filter",
+          "source": "engines/integrated_capability_runtime.py::blacklist_filter",
+          "adapter": "offline-advisory",
+          "canonical_capability": "advisory-correlation",
+          "evidence": [
+            "local-advisory-corpus"
+          ],
+          "contact": "local",
+          "parallel_group": "advisory",
+          "outputs": [
+            "filtered-reference"
+          ]
+        },
+        {
+          "id": "advisory.merge_records",
+          "source": "engines/integrated_capability_runtime.py::merge_records",
+          "adapter": "offline-advisory",
+          "canonical_capability": "advisory-correlation",
+          "evidence": [
+            "local-advisory-corpus"
+          ],
+          "contact": "local",
+          "parallel_group": "advisory",
+          "outputs": [
+            "offline-index"
+          ]
+        },
+        {
+          "id": "advisory.render_summary",
+          "source": "engines/integrated_capability_runtime.py::render_summary",
+          "adapter": "offline-advisory",
+          "canonical_capability": "advisory-correlation",
+          "evidence": [
+            "offline-index"
+          ],
+          "contact": "local",
+          "parallel_group": "reporting",
+          "outputs": [
+            "report"
+          ]
+        }
+      ]
+    },
+    "industrial": {
+      "label": "Industrial protocol compatibility",
+      "root": "project",
+      "source_paths": [
+        "engines/industrial_followup_runtime.py",
+        "data/wordlists/range.paths.txt"
+      ],
+      "functions": [
+        {
+          "id": "industrial.read_urls",
+          "source": "engines/industrial_followup_runtime.py::read_urls",
+          "adapter": "industrial",
+          "canonical_capability": "industrial-protocol-followup",
+          "evidence": [
+            "url-artifact"
+          ],
+          "contact": "local",
+          "parallel_group": "industrial-context",
+          "outputs": [
+            "url"
+          ]
+        },
+        {
+          "id": "industrial.keyword_search",
+          "source": "engines/industrial_followup_runtime.py::keyword_search",
+          "adapter": "industrial",
+          "canonical_capability": "industrial-protocol-followup",
+          "evidence": [
+            "url-artifact"
+          ],
+          "contact": "active-gated",
+          "parallel_group": "industrial-context",
+          "outputs": [
+            "indicator"
+          ]
+        },
+        {
+          "id": "industrial.protocol_followup",
+          "source": "engines/industrial_followup_runtime.py::protocol_followup",
+          "adapter": "industrial",
+          "canonical_capability": "industrial-protocol-followup",
+          "evidence": [
+            "ics-keyword",
+            "concrete-service"
+          ],
+          "contact": "active-gated",
+          "parallel_group": "industrial-followup",
+          "outputs": [
+            "service",
+            "finding"
+          ]
+        }
+      ]
+    },
+    "range": {
+      "label": "Range verification compatibility",
+      "root": "project",
+      "source_paths": [
+        "engines/integrated_capability_runtime.py",
+        "data/wordlists/range.paths.txt"
+      ],
+      "functions": [
+        {
+          "id": "range.range_discovery",
+          "source": "engines/integrated_capability_runtime.py::range_discovery",
+          "adapter": "range",
+          "canonical_capability": "range-http-verification",
+          "evidence": [
+            "operator-range"
+          ],
+          "contact": "active-gated",
+          "parallel_group": "range-discovery",
+          "outputs": [
+            "service"
+          ]
+        },
+        {
+          "id": "range.load_paths",
+          "source": "engines/integrated_capability_runtime.py::load_paths",
+          "adapter": "range",
+          "canonical_capability": "range-http-verification",
+          "evidence": [
+            "local-path-dictionary"
+          ],
+          "contact": "local",
+          "parallel_group": "range-plan",
+          "outputs": [
+            "path"
+          ]
+        },
+        {
+          "id": "range.verify_paths",
+          "source": "engines/integrated_capability_runtime.py::verify_paths",
+          "adapter": "range",
+          "canonical_capability": "range-http-verification",
+          "evidence": [
+            "concrete-http-service",
+            "bounded-paths"
+          ],
+          "contact": "active-gated",
+          "parallel_group": "range-http",
+          "outputs": [
+            "url",
+            "status"
+          ]
+        },
+        {
+          "id": "range.emit_200",
+          "source": "engines/integrated_capability_runtime.py::emit_200",
+          "adapter": "range",
+          "canonical_capability": "range-http-verification",
+          "evidence": [
+            "http-response"
+          ],
+          "contact": "local",
+          "parallel_group": "normalization",
+          "outputs": [
+            "verified-200"
+          ]
+        }
+      ]
+    },
+    "credential": {
+      "label": "Credential audit compatibility",
+      "root": "project",
+      "source_paths": [
+        "engines/auth_validation.py",
+        "engines/integrated_capability_runtime.py"
+      ],
+      "functions": [
+        {
+          "id": "credential.run_masscan",
+          "source": "engines/auth_validation.py::run_masscan",
+          "adapter": "ssh",
+          "canonical_capability": "ssh-credential-audit",
+          "evidence": [
+            "operator-range"
+          ],
+          "contact": "active-explicit",
+          "parallel_group": "ssh-discovery",
+          "outputs": [
+            "ssh-endpoint"
+          ]
+        },
+        {
+          "id": "credential.parse_masscan_output",
+          "source": "engines/auth_validation.py::parse_masscan_output",
+          "adapter": "ssh",
+          "canonical_capability": "ssh-credential-audit",
+          "evidence": [
+            "masscan-output"
+          ],
+          "contact": "local",
+          "parallel_group": "ssh-discovery",
+          "outputs": [
+            "ssh-endpoint"
+          ]
+        },
+        {
+          "id": "credential.is_valid_ip",
+          "source": "engines/auth_validation.py::is_valid_ip",
+          "adapter": "ssh",
+          "canonical_capability": "ssh-credential-audit",
+          "evidence": [
+            "host-input"
+          ],
+          "contact": "local",
+          "parallel_group": "ssh-plan",
+          "outputs": [
+            "validated-host"
+          ]
+        },
+        {
+          "id": "credential.attempt_ssh_connection",
+          "source": "engines/auth_validation.py::attempt_ssh_connection",
+          "adapter": "ssh",
+          "canonical_capability": "ssh-credential-audit",
+          "evidence": [
+            "observed-ssh-service",
+            "explicit-credential-audit"
+          ],
+          "contact": "active-explicit",
+          "parallel_group": "ssh-audit",
+          "outputs": [
+            "authentication-state",
+            "connection-test"
+          ]
+        },
+        {
+          "id": "credential.candidate_bound",
+          "source": "engines/auth_validation.py::candidate_bound",
+          "adapter": "ssh",
+          "canonical_capability": "ssh-credential-audit",
+          "evidence": [
+            "explicit-credential-audit"
+          ],
+          "contact": "local",
+          "parallel_group": "ssh-plan",
+          "outputs": [
+            "execution-plan"
+          ]
+        }
+      ]
+    },
+    "attribution": {
+      "label": "Attribution chain compatibility",
+      "root": "project",
+      "source_paths": [
+        "engines/recon_core.py",
+        "engines/network_inventory_runtime.py"
+      ],
+      "functions": [
+        {
+          "id": "attribution.collect_subdomains",
+          "source": "engines/recon_core.py::collect_subdomains",
+          "adapter": "discovery",
+          "canonical_capability": "subdomain-infrastructure",
+          "evidence": [
+            "target-domain"
+          ],
+          "contact": "passive-plus-active-gated",
+          "parallel_group": "discovery",
+          "outputs": [
+            "host"
+          ]
+        },
+        {
+          "id": "attribution.attribute_ips",
+          "source": "engines/recon_core.py::attribute_ips",
+          "adapter": "discovery",
+          "canonical_capability": "subdomain-infrastructure",
+          "evidence": [
+            "discovered-host"
+          ],
+          "contact": "bounded",
+          "parallel_group": "attribution",
+          "outputs": [
+            "ip"
+          ]
+        },
+        {
+          "id": "attribution.nmap_vuln",
+          "source": "engines/recon_core.py::nmap_vuln",
+          "adapter": "discovery",
+          "canonical_capability": "subdomain-infrastructure",
+          "evidence": [
+            "concrete-host"
+          ],
+          "contact": "active-gated",
+          "parallel_group": "network",
+          "outputs": [
+            "service",
+            "finding"
+          ]
+        }
+      ]
+    },
+    "web": {
+      "label": "Web evidence compatibility",
+      "root": "project",
+      "source_paths": [
+        "engines/web_chain_runtime.py",
+        "engines/web_fanout.py"
+      ],
+      "functions": [
+        {
+          "id": "web.extract_domain",
+          "source": "engines/web_chain_runtime.py::extract_domain",
+          "adapter": "web-evidence",
+          "canonical_capability": "complete-web-evidence",
+          "evidence": [
+            "target-url"
+          ],
+          "contact": "local",
+          "parallel_group": "web-plan",
+          "outputs": [
+            "domain"
+          ]
+        },
+        {
+          "id": "web.crawl",
+          "source": "engines/web_chain_runtime.py::crawl",
+          "adapter": "web-evidence",
+          "canonical_capability": "complete-web-evidence",
+          "evidence": [
+            "verified-http-origin"
+          ],
+          "contact": "active-gated",
+          "parallel_group": "crawl",
+          "outputs": [
+            "url"
+          ]
+        },
+        {
+          "id": "web.dedupe_urls",
+          "source": "engines/web_chain_runtime.py::dedupe_urls",
+          "adapter": "web-evidence",
+          "canonical_capability": "complete-web-evidence",
+          "evidence": [
+            "crawl-output"
+          ],
+          "contact": "local",
+          "parallel_group": "normalization",
+          "outputs": [
+            "url"
+          ]
+        },
+        {
+          "id": "web.classify_files",
+          "source": "engines/web_chain_runtime.py::classify_files",
+          "adapter": "web-evidence",
+          "canonical_capability": "complete-web-evidence",
+          "evidence": [
+            "url-artifact"
+          ],
+          "contact": "local",
+          "parallel_group": "normalization",
+          "outputs": [
+            "file"
+          ]
+        },
+        {
+          "id": "web.filter_domains",
+          "source": "engines/web_chain_runtime.py::filter_domains",
+          "adapter": "web-evidence",
+          "canonical_capability": "complete-web-evidence",
+          "evidence": [
+            "url-artifact"
+          ],
+          "contact": "local",
+          "parallel_group": "normalization",
+          "outputs": [
+            "domain"
+          ]
+        },
+        {
+          "id": "web.dns_records",
+          "source": "engines/web_chain_runtime.py::dns_records",
+          "adapter": "web-evidence",
+          "canonical_capability": "complete-web-evidence",
+          "evidence": [
+            "domain"
+          ],
+          "contact": "active-gated",
+          "parallel_group": "dns",
+          "outputs": [
+            "record"
+          ]
+        },
+        {
+          "id": "web.certificate_names",
+          "source": "engines/web_chain_runtime.py::certificate_names",
+          "adapter": "web-evidence",
+          "canonical_capability": "complete-web-evidence",
+          "evidence": [
+            "https-origin"
+          ],
+          "contact": "active-gated",
+          "parallel_group": "tls",
+          "outputs": [
+            "certificate"
+          ]
+        },
+        {
+          "id": "web.ip_attribution",
+          "source": "engines/web_chain_runtime.py::ip_attribution",
+          "adapter": "discovery",
+          "canonical_capability": "subdomain-infrastructure",
+          "evidence": [
+            "domain"
+          ],
+          "contact": "bounded",
+          "parallel_group": "attribution",
+          "outputs": [
+            "ip"
+          ]
+        },
+        {
+          "id": "web.linked_crawl",
+          "source": "engines/web_chain_runtime.py::linked_crawl",
+          "adapter": "web-evidence",
+          "canonical_capability": "complete-web-evidence",
+          "evidence": [
+            "domain-or-ip"
+          ],
+          "contact": "active-gated",
+          "parallel_group": "crawl",
+          "outputs": [
+            "url"
+          ]
+        },
+        {
+          "id": "web.contacts",
+          "source": "engines/web_chain_runtime.py::contacts",
+          "adapter": "web-evidence",
+          "canonical_capability": "complete-web-evidence",
+          "evidence": [
+            "local-artifacts"
+          ],
+          "contact": "local",
+          "parallel_group": "projection",
+          "outputs": [
+            "email",
+            "social"
+          ]
+        },
+        {
+          "id": "web.injection_queue",
+          "source": "engines/web_chain_runtime.py::injection_queue",
+          "adapter": "web-evidence",
+          "canonical_capability": "complete-web-evidence",
+          "evidence": [
+            "parameterized-url"
+          ],
+          "contact": "local",
+          "parallel_group": "projection",
+          "outputs": [
+            "parameter"
+          ]
+        },
+        {
+          "id": "web.followup_menu",
+          "source": "engines/web_chain_runtime.py::followup_menu",
+          "adapter": "evidence",
+          "canonical_capability": "complete-assessment",
+          "evidence": [
+            "typed-evidence"
+          ],
+          "contact": "explicit-method-gated",
+          "parallel_group": "assessment",
+          "outputs": [
+            "execution-plan",
+            "finding"
+          ]
+        }
+      ]
+    }
+  },
+  "companions": {
+    "device-followup": {
+      "label": "Device fingerprint compatibility",
+      "root": "project",
+      "source_paths": [
+        "engines/device_followup_runtime.py",
+        "data/cameras/device-profiles"
+      ],
+      "functions": [
+        {
+          "id": "device_followup.range_scan",
+          "source": "engines/device_followup_runtime.py::range_scan",
+          "adapter": "device",
+          "canonical_capability": "device-inventory",
+          "evidence": [
+            "operator-range",
+            "camera-fingerprint"
+          ],
+          "contact": "active-gated",
+          "parallel_group": "device-discovery",
+          "outputs": [
+            "service",
+            "device"
+          ]
+        },
+        {
+          "id": "device_followup.model_rules",
+          "source": "engines/device_followup_runtime.py::model_rules",
+          "adapter": "device",
+          "canonical_capability": "device-inventory",
+          "evidence": [
+            "camera-fingerprint"
+          ],
+          "contact": "local",
+          "parallel_group": "device-plan",
+          "outputs": [
+            "fingerprint"
+          ]
+        },
+        {
+          "id": "device_followup.port_rules",
+          "source": "engines/device_followup_runtime.py::port_rules",
+          "adapter": "device",
+          "canonical_capability": "device-inventory",
+          "evidence": [
+            "camera-fingerprint"
+          ],
+          "contact": "local",
+          "parallel_group": "device-plan",
+          "outputs": [
+            "service"
+          ]
+        },
+        {
+          "id": "device_followup.fingerprint_probe",
+          "source": "engines/device_followup_runtime.py::fingerprint_probe",
+          "adapter": "device",
+          "canonical_capability": "device-inventory",
+          "evidence": [
+            "in-scope-camera-endpoint",
+            "verified-fingerprint"
+          ],
+          "contact": "active-gated",
+          "parallel_group": "device-probe",
+          "outputs": [
+            "device",
+            "finding"
+          ]
+        }
+      ]
+    }
+  }
+}

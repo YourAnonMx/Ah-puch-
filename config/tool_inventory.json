@@ -1,0 +1,2294 @@
+{
+  "schema_version": 1,
+  "policy": {
+    "ai_runtime": false,
+    "install_during_target_run": false,
+    "independent_methods_are_additive": true,
+    "phase_barrier_required": true,
+    "human_txt_required": true,
+    "native_artifact_required_when_supported": true
+  },
+  "blocks": [
+    "00-input-target",
+    "01-discovery",
+    "02-dns",
+    "03-network",
+    "04-http",
+    "05-history",
+    "06-crawl",
+    "07-content",
+    "08-js-api-parameters",
+    "09-fingerprint-waf-tls",
+    "10-assessment",
+    "11-local-cloud",
+    "12-device-ics",
+    "13-normalization",
+    "14-fan-in",
+    "15-convergence",
+    "16-reporting",
+    "17-seal"
+  ],
+  "tools": [
+    {
+      "id": "native_target_boundary",
+      "runner_id": "native_target_boundary",
+      "binary": "",
+      "block": "00-input-target",
+      "capability": "automatic target normalization",
+      "inputs": [
+        "target"
+      ],
+      "outputs": [
+        "host",
+        "ip",
+        "origin",
+        "url",
+        "path",
+        "parameter",
+        "service"
+      ],
+      "profiles": [
+        "baseline",
+        "full",
+        "deep"
+      ],
+      "contact": "none",
+      "adapter": "native"
+    },
+    {
+      "id": "native_dns",
+      "runner_id": "native_dns",
+      "binary": "",
+      "block": "01-discovery",
+      "capability": "native DNS discovery",
+      "inputs": [
+        "host"
+      ],
+      "outputs": [
+        "host",
+        "ip"
+      ],
+      "profiles": [
+        "baseline",
+        "full",
+        "deep"
+      ],
+      "contact": "passive",
+      "adapter": "native"
+    },
+    {
+      "id": "subfinder",
+      "runner_id": "subdomain_discovery",
+      "binary": "subfinder",
+      "block": "01-discovery",
+      "capability": "passive subdomain discovery",
+      "inputs": [
+        "host"
+      ],
+      "outputs": [
+        "host"
+      ],
+      "profiles": [
+        "baseline",
+        "full",
+        "deep"
+      ],
+      "contact": "passive",
+      "adapter": "domain-output",
+      "version": [
+        "-version",
+        "-duc"
+      ],
+      "help": [
+        "-h"
+      ],
+      "identity": [
+        "subfinder"
+      ]
+    },
+    {
+      "id": "assetfinder",
+      "runner_id": "assetfinder",
+      "binary": "assetfinder",
+      "block": "01-discovery",
+      "capability": "passive subdomain discovery",
+      "inputs": [
+        "host"
+      ],
+      "outputs": [
+        "host"
+      ],
+      "profiles": [
+        "full",
+        "deep"
+      ],
+      "contact": "passive",
+      "adapter": "domain-stdout",
+      "version": [
+        "--help"
+      ],
+      "help": [
+        "--help"
+      ],
+      "identity": [
+        "assetfinder"
+      ]
+    },
+    {
+      "id": "amass",
+      "runner_id": "amass",
+      "binary": "amass",
+      "block": "01-discovery",
+      "capability": "passive and active subdomain discovery",
+      "inputs": [
+        "host"
+      ],
+      "outputs": [
+        "host",
+        "ip"
+      ],
+      "profiles": [
+        "full",
+        "deep"
+      ],
+      "contact": "passive",
+      "adapter": "domain-output",
+      "version": [
+        "-version"
+      ],
+      "help": [
+        "enum",
+        "-h"
+      ],
+      "identity": [
+        "amass"
+      ]
+    },
+    {
+      "id": "findomain",
+      "runner_id": "findomain",
+      "binary": "findomain",
+      "block": "01-discovery",
+      "capability": "passive subdomain discovery",
+      "inputs": [
+        "host"
+      ],
+      "outputs": [
+        "host"
+      ],
+      "profiles": [
+        "full",
+        "deep"
+      ],
+      "contact": "passive",
+      "adapter": "domain-output",
+      "version": [
+        "--version"
+      ],
+      "help": [
+        "--help"
+      ],
+      "identity": [
+        "findomain"
+      ]
+    },
+    {
+      "id": "chaos",
+      "runner_id": "chaos",
+      "binary": "chaos",
+      "block": "01-discovery",
+      "capability": "Chaos dataset subdomain discovery",
+      "inputs": [
+        "host"
+      ],
+      "outputs": [
+        "host"
+      ],
+      "profiles": [
+        "full",
+        "deep"
+      ],
+      "contact": "passive",
+      "adapter": "domain-output",
+      "credential_env": "CHAOS_KEY",
+      "version": [
+        "-version",
+        "-duc"
+      ],
+      "help": [
+        "-h"
+      ],
+      "identity": [
+        "chaos"
+      ]
+    },
+    {
+      "id": "crtsh",
+      "runner_id": "crtsh",
+      "binary": "",
+      "block": "01-discovery",
+      "capability": "crt.sh certificate transparency adapter",
+      "inputs": [
+        "host"
+      ],
+      "outputs": [
+        "host",
+        "fingerprint"
+      ],
+      "profiles": [
+        "baseline",
+        "full",
+        "deep"
+      ],
+      "contact": "passive",
+      "adapter": "native-crtsh"
+    },
+    {
+      "id": "certspotter",
+      "runner_id": "certspotter",
+      "binary": "",
+      "block": "01-discovery",
+      "capability": "Cert Spotter certificate transparency adapter",
+      "inputs": [
+        "host"
+      ],
+      "outputs": [
+        "host",
+        "fingerprint"
+      ],
+      "profiles": [
+        "full",
+        "deep"
+      ],
+      "contact": "passive",
+      "adapter": "native-certspotter"
+    },
+    {
+      "id": "ctfr",
+      "runner_id": "ctfr",
+      "binary": "ctfr",
+      "block": "01-discovery",
+      "capability": "certificate transparency discovery",
+      "inputs": [
+        "host"
+      ],
+      "outputs": [
+        "host"
+      ],
+      "profiles": [
+        "deep"
+      ],
+      "contact": "passive",
+      "adapter": "domain-stdout",
+      "version": [
+        "-h"
+      ],
+      "help": [
+        "-h"
+      ],
+      "identity": [
+        "ctfr"
+      ]
+    },
+    {
+      "id": "dig",
+      "runner_id": "dns_query",
+      "binary": "dig",
+      "block": "02-dns",
+      "capability": "DNS record queries",
+      "inputs": [
+        "host"
+      ],
+      "outputs": [
+        "host",
+        "ip"
+      ],
+      "profiles": [
+        "baseline",
+        "full",
+        "deep"
+      ],
+      "contact": "passive",
+      "adapter": "dns-query",
+      "version": [
+        "-v"
+      ],
+      "help": [
+        "-h"
+      ],
+      "identity": [
+        "dig"
+      ]
+    },
+    {
+      "id": "dnsx",
+      "runner_id": "dnsx",
+      "binary": "dnsx",
+      "block": "02-dns",
+      "capability": "bulk DNS resolution",
+      "inputs": [
+        "host-list"
+      ],
+      "outputs": [
+        "host",
+        "ip"
+      ],
+      "profiles": [
+        "full",
+        "deep"
+      ],
+      "contact": "passive",
+      "adapter": "stdin-output",
+      "version": [
+        "-version"
+      ],
+      "help": [
+        "-h"
+      ],
+      "identity": [
+        "dnsx"
+      ]
+    },
+    {
+      "id": "puredns",
+      "runner_id": "puredns",
+      "binary": "puredns",
+      "block": "02-dns",
+      "capability": "validated bulk DNS resolution",
+      "inputs": [
+        "host-list"
+      ],
+      "outputs": [
+        "host",
+        "ip"
+      ],
+      "profiles": [
+        "full",
+        "deep"
+      ],
+      "contact": "active",
+      "adapter": "input-output",
+      "version": [
+        "--version"
+      ],
+      "help": [
+        "--help"
+      ],
+      "identity": [
+        "puredns"
+      ]
+    },
+    {
+      "id": "shuffledns",
+      "runner_id": "shuffledns",
+      "binary": "shuffledns",
+      "block": "02-dns",
+      "capability": "massdns-backed DNS resolution",
+      "inputs": [
+        "host-list"
+      ],
+      "outputs": [
+        "host",
+        "ip"
+      ],
+      "profiles": [
+        "deep"
+      ],
+      "contact": "active",
+      "adapter": "input-output",
+      "version": [
+        "-version"
+      ],
+      "help": [
+        "-h"
+      ],
+      "identity": [
+        "shuffledns"
+      ]
+    },
+    {
+      "id": "massdns",
+      "runner_id": "massdns",
+      "binary": "massdns",
+      "block": "02-dns",
+      "capability": "high-volume DNS resolution",
+      "inputs": [
+        "host-list"
+      ],
+      "outputs": [
+        "host",
+        "ip"
+      ],
+      "profiles": [
+        "deep"
+      ],
+      "contact": "active",
+      "adapter": "stdin-output",
+      "version": [
+        "--help"
+      ],
+      "help": [
+        "--help"
+      ],
+      "identity": [
+        "massdns"
+      ]
+    },
+    {
+      "id": "dnsrecon",
+      "runner_id": "dnsrecon",
+      "binary": "dnsrecon",
+      "block": "02-dns",
+      "capability": "DNS enumeration",
+      "inputs": [
+        "host"
+      ],
+      "outputs": [
+        "host",
+        "ip",
+        "finding"
+      ],
+      "profiles": [
+        "full",
+        "deep"
+      ],
+      "contact": "active",
+      "adapter": "domain-output",
+      "version": [
+        "--version"
+      ],
+      "help": [
+        "--help"
+      ],
+      "identity": [
+        "dnsrecon"
+      ]
+    },
+    {
+      "id": "dnsenum",
+      "runner_id": "dnsenum",
+      "binary": "dnsenum",
+      "block": "02-dns",
+      "capability": "DNS enumeration",
+      "inputs": [
+        "host"
+      ],
+      "outputs": [
+        "host",
+        "ip"
+      ],
+      "profiles": [
+        "deep"
+      ],
+      "contact": "active",
+      "adapter": "domain-stdout",
+      "version": [
+        "--help"
+      ],
+      "help": [
+        "--help"
+      ],
+      "identity": [
+        "dnsenum"
+      ]
+    },
+    {
+      "id": "dnsmap",
+      "runner_id": "dnsmap",
+      "binary": "dnsmap",
+      "block": "02-dns",
+      "capability": "DNS wordlist enumeration",
+      "inputs": [
+        "host"
+      ],
+      "outputs": [
+        "host",
+        "ip"
+      ],
+      "profiles": [
+        "deep"
+      ],
+      "contact": "active",
+      "adapter": "domain-output",
+      "version": [
+        "-h"
+      ],
+      "help": [
+        "-h"
+      ],
+      "identity": [
+        "dnsmap"
+      ]
+    },
+    {
+      "id": "altdns",
+      "runner_id": "altdns",
+      "binary": "altdns",
+      "block": "02-dns",
+      "capability": "DNS permutation generation",
+      "inputs": [
+        "host-list"
+      ],
+      "outputs": [
+        "host",
+        "ip"
+      ],
+      "profiles": [
+        "deep"
+      ],
+      "contact": "active",
+      "adapter": "input-output",
+      "version": [
+        "-h"
+      ],
+      "help": [
+        "-h"
+      ],
+      "identity": [
+        "altdns"
+      ]
+    },
+    {
+      "id": "knockpy",
+      "runner_id": "knockpy",
+      "binary": "knockpy",
+      "block": "02-dns",
+      "capability": "subdomain wordlist enumeration",
+      "inputs": [
+        "host"
+      ],
+      "outputs": [
+        "host",
+        "ip"
+      ],
+      "profiles": [
+        "deep"
+      ],
+      "contact": "active",
+      "adapter": "domain-output",
+      "version": [
+        "--version"
+      ],
+      "help": [
+        "--help"
+      ],
+      "identity": [
+        "knockpy"
+      ]
+    },
+    {
+      "id": "dnstwist",
+      "runner_id": "dnstwist",
+      "binary": "dnstwist",
+      "block": "02-dns",
+      "capability": "related-domain analysis",
+      "inputs": [
+        "host"
+      ],
+      "outputs": [
+        "host",
+        "ip",
+        "finding"
+      ],
+      "profiles": [
+        "deep"
+      ],
+      "contact": "passive",
+      "adapter": "domain-output",
+      "version": [
+        "--version"
+      ],
+      "help": [
+        "--help"
+      ],
+      "identity": [
+        "dnstwist"
+      ]
+    },
+    {
+      "id": "native_network",
+      "runner_id": "native_network",
+      "binary": "",
+      "block": "03-network",
+      "capability": "native TCP and bounded UDP probing",
+      "inputs": [
+        "host",
+        "ip"
+      ],
+      "outputs": [
+        "service"
+      ],
+      "profiles": [
+        "baseline",
+        "full",
+        "deep"
+      ],
+      "contact": "active",
+      "adapter": "native"
+    },
+    {
+      "id": "nmap",
+      "runner_id": "network_service",
+      "binary": "nmap",
+      "block": "03-network",
+      "capability": "port service and protocol validation",
+      "inputs": [
+        "network-target-list"
+      ],
+      "outputs": [
+        "service",
+        "technology",
+        "fingerprint"
+      ],
+      "profiles": [
+        "baseline",
+        "full",
+        "deep"
+      ],
+      "contact": "active",
+      "adapter": "network-output",
+      "version": [
+        "--version"
+      ],
+      "help": [
+        "--help"
+      ],
+      "identity": [
+        "nmap"
+      ]
+    },
+    {
+      "id": "naabu",
+      "runner_id": "naabu",
+      "binary": "naabu",
+      "block": "03-network",
+      "capability": "TCP port discovery",
+      "inputs": [
+        "network-target-list"
+      ],
+      "outputs": [
+        "service"
+      ],
+      "profiles": [
+        "full",
+        "deep"
+      ],
+      "contact": "active",
+      "adapter": "stdin-output",
+      "version": [
+        "-version"
+      ],
+      "help": [
+        "-h"
+      ],
+      "identity": [
+        "naabu"
+      ]
+    },
+    {
+      "id": "masscan",
+      "runner_id": "range_discovery",
+      "binary": "masscan",
+      "block": "03-network",
+      "capability": "range service discovery",
+      "inputs": [
+        "network-target-list"
+      ],
+      "outputs": [
+        "service"
+      ],
+      "profiles": [
+        "deep"
+      ],
+      "contact": "active",
+      "adapter": "network-output",
+      "version": [
+        "--version"
+      ],
+      "help": [
+        "--nmap"
+      ],
+      "identity": [
+        "masscan"
+      ]
+    },
+    {
+      "id": "native_http",
+      "runner_id": "native_http",
+      "binary": "",
+      "block": "04-http",
+      "capability": "native HTTP observation",
+      "inputs": [
+        "origin",
+        "url"
+      ],
+      "outputs": [
+        "origin",
+        "url",
+        "technology",
+        "fingerprint"
+      ],
+      "profiles": [
+        "baseline",
+        "full",
+        "deep"
+      ],
+      "contact": "active",
+      "adapter": "native"
+    },
+    {
+      "id": "httpx",
+      "runner_id": "http_probe",
+      "binary": "httpx",
+      "block": "04-http",
+      "capability": "HTTP probing and metadata on discovered hosts, URLs, and TCP services",
+      "inputs": [
+        "network-target-list",
+        "service",
+        "url-list"
+      ],
+      "outputs": [
+        "origin",
+        "url",
+        "technology",
+        "fingerprint"
+      ],
+      "profiles": [
+        "baseline",
+        "full",
+        "deep"
+      ],
+      "contact": "active",
+      "adapter": "stdin-output",
+      "version": [
+        "-version"
+      ],
+      "help": [
+        "-h"
+      ],
+      "identity": [
+        "httpx"
+      ]
+    },
+    {
+      "id": "wget",
+      "runner_id": "wget",
+      "binary": "wget",
+      "block": "04-http",
+      "capability": "independent HTTP status and redirect verification",
+      "inputs": [
+        "url-list"
+      ],
+      "outputs": [
+        "origin",
+        "url",
+        "fingerprint"
+      ],
+      "profiles": [
+        "baseline",
+        "full",
+        "deep"
+      ],
+      "contact": "active",
+      "adapter": "wget-status",
+      "version": [
+        "--version"
+      ],
+      "help": [
+        "--help"
+      ],
+      "identity": [
+        "gnu wget",
+        "wget"
+      ]
+    },
+    {
+      "id": "curl",
+      "runner_id": "http_client",
+      "binary": "curl",
+      "block": "04-http",
+      "capability": "independent HTTP status and redirect verification",
+      "inputs": [
+        "url-list"
+      ],
+      "outputs": [
+        "origin",
+        "url",
+        "fingerprint"
+      ],
+      "profiles": [
+        "baseline",
+        "full",
+        "deep"
+      ],
+      "contact": "active",
+      "adapter": "curl-status",
+      "version": [
+        "--version"
+      ],
+      "help": [
+        "--help",
+        "all"
+      ],
+      "identity": [
+        "curl"
+      ]
+    },
+    {
+      "id": "gau",
+      "runner_id": "historical_url_collection",
+      "binary": "gau",
+      "block": "05-history",
+      "capability": "historical URL collection",
+      "inputs": [
+        "host"
+      ],
+      "outputs": [
+        "url",
+        "path",
+        "parameter"
+      ],
+      "profiles": [
+        "baseline",
+        "full",
+        "deep"
+      ],
+      "contact": "passive",
+      "adapter": "domain-output",
+      "version": [
+        "--version"
+      ],
+      "help": [
+        "--help"
+      ],
+      "identity": [
+        "gau"
+      ]
+    },
+    {
+      "id": "waybackurls",
+      "runner_id": "waybackurls",
+      "binary": "waybackurls",
+      "block": "05-history",
+      "capability": "Wayback URL collection",
+      "inputs": [
+        "host-list"
+      ],
+      "outputs": [
+        "url",
+        "path",
+        "parameter"
+      ],
+      "profiles": [
+        "full",
+        "deep"
+      ],
+      "contact": "passive",
+      "adapter": "stdin-output",
+      "version": [
+        "-h"
+      ],
+      "help": [
+        "-h"
+      ],
+      "identity": [
+        "waybackurls"
+      ]
+    },
+    {
+      "id": "waymore",
+      "runner_id": "waymore",
+      "binary": "waymore",
+      "block": "05-history",
+      "capability": "multi-source historical URL collection",
+      "inputs": [
+        "host"
+      ],
+      "outputs": [
+        "url",
+        "path",
+        "parameter"
+      ],
+      "profiles": [
+        "full",
+        "deep"
+      ],
+      "contact": "passive",
+      "adapter": "domain-output",
+      "version": [
+        "--help"
+      ],
+      "help": [
+        "--help"
+      ],
+      "identity": [
+        "waymore"
+      ]
+    },
+    {
+      "id": "katana",
+      "runner_id": "crawl_primary",
+      "binary": "katana",
+      "block": "06-crawl",
+      "capability": "endpoint crawling",
+      "inputs": [
+        "url-list"
+      ],
+      "outputs": [
+        "url",
+        "path",
+        "parameter"
+      ],
+      "profiles": [
+        "baseline",
+        "full",
+        "deep"
+      ],
+      "contact": "active",
+      "adapter": "url-output",
+      "version": [
+        "-version",
+        "-duc"
+      ],
+      "help": [
+        "-h"
+      ],
+      "identity": [
+        "katana"
+      ]
+    },
+    {
+      "id": "gospider",
+      "runner_id": "crawl_secondary",
+      "binary": "gospider",
+      "block": "06-crawl",
+      "capability": "secondary crawl and source collection",
+      "inputs": [
+        "url-list"
+      ],
+      "outputs": [
+        "url",
+        "path",
+        "parameter"
+      ],
+      "profiles": [
+        "full",
+        "deep"
+      ],
+      "contact": "active",
+      "adapter": "url-output",
+      "version": [
+        "--version"
+      ],
+      "help": [
+        "-h"
+      ],
+      "identity": [
+        "gospider"
+      ]
+    },
+    {
+      "id": "hakrawler",
+      "runner_id": "crawl_fallback",
+      "binary": "hakrawler",
+      "block": "06-crawl",
+      "capability": "lightweight crawl",
+      "inputs": [
+        "url-list"
+      ],
+      "outputs": [
+        "url",
+        "path",
+        "parameter"
+      ],
+      "profiles": [
+        "full",
+        "deep"
+      ],
+      "contact": "active",
+      "adapter": "stdin-output",
+      "version": [
+        "-h"
+      ],
+      "help": [
+        "-h"
+      ],
+      "identity": [
+        "hakrawler"
+      ]
+    },
+    {
+      "id": "web_evidence_projection",
+      "runner_id": "web_evidence_projection",
+      "binary": "",
+      "block": "06-crawl",
+      "capability": "canonical web evidence projection",
+      "inputs": [
+        "url-list"
+      ],
+      "outputs": [
+        "url",
+        "path",
+        "parameter"
+      ],
+      "profiles": [
+        "deep"
+      ],
+      "contact": "local",
+      "adapter": "native-projection",
+      "version": [],
+      "help": [],
+      "identity": [
+        "complete-web-evidence"
+      ]
+    },
+    {
+      "id": "playwright",
+      "runner_id": "playwright",
+      "binary": "playwright",
+      "block": "06-crawl",
+      "capability": "headless browser crawl",
+      "inputs": [
+        "url-list"
+      ],
+      "outputs": [
+        "url",
+        "path",
+        "fingerprint"
+      ],
+      "profiles": [
+        "deep"
+      ],
+      "contact": "active",
+      "adapter": "headless",
+      "version": [
+        "--version"
+      ],
+      "help": [
+        "--help"
+      ],
+      "identity": [
+        "playwright"
+      ]
+    },
+    {
+      "id": "ffuf",
+      "runner_id": "content_fuzz",
+      "binary": "ffuf",
+      "block": "07-content",
+      "capability": "content fuzzing",
+      "inputs": [
+        "origin",
+        "wordlist"
+      ],
+      "outputs": [
+        "url",
+        "path",
+        "fingerprint"
+      ],
+      "profiles": [
+        "baseline",
+        "full",
+        "deep"
+      ],
+      "contact": "active",
+      "adapter": "content-output",
+      "version": [
+        "-V"
+      ],
+      "help": [
+        "-h"
+      ],
+      "identity": [
+        "ffuf"
+      ]
+    },
+    {
+      "id": "dirsearch",
+      "runner_id": "directory_primary",
+      "binary": "dirsearch",
+      "block": "07-content",
+      "capability": "directory and file enumeration",
+      "inputs": [
+        "origin",
+        "wordlist"
+      ],
+      "outputs": [
+        "url",
+        "path",
+        "fingerprint"
+      ],
+      "profiles": [
+        "full",
+        "deep"
+      ],
+      "contact": "active",
+      "adapter": "content-output",
+      "version": [
+        "--version"
+      ],
+      "help": [
+        "--help"
+      ],
+      "identity": [
+        "dirsearch"
+      ]
+    },
+    {
+      "id": "gobuster",
+      "runner_id": "directory_secondary",
+      "binary": "gobuster",
+      "block": "07-content",
+      "capability": "secondary directory enumeration",
+      "inputs": [
+        "origin",
+        "wordlist"
+      ],
+      "outputs": [
+        "url",
+        "path",
+        "fingerprint"
+      ],
+      "profiles": [
+        "full",
+        "deep"
+      ],
+      "contact": "active",
+      "adapter": "content-output",
+      "version": [
+        "--version"
+      ],
+      "help": [
+        "dir",
+        "--help"
+      ],
+      "identity": [
+        "gobuster"
+      ]
+    },
+    {
+      "id": "feroxbuster",
+      "runner_id": "feroxbuster",
+      "binary": "feroxbuster",
+      "block": "07-content",
+      "capability": "recursive content discovery",
+      "inputs": [
+        "origin",
+        "wordlist"
+      ],
+      "outputs": [
+        "url",
+        "path",
+        "fingerprint"
+      ],
+      "profiles": [
+        "deep"
+      ],
+      "contact": "active",
+      "adapter": "content-output",
+      "version": [
+        "--version"
+      ],
+      "help": [
+        "--help"
+      ],
+      "identity": [
+        "feroxbuster"
+      ]
+    },
+    {
+      "id": "native_js_api",
+      "runner_id": "native_js_api",
+      "binary": "",
+      "block": "08-js-api-parameters",
+      "capability": "native JavaScript API and parameter extraction",
+      "inputs": [
+        "url-list"
+      ],
+      "outputs": [
+        "url",
+        "path",
+        "parameter",
+        "finding"
+      ],
+      "profiles": [
+        "baseline",
+        "full",
+        "deep"
+      ],
+      "contact": "active",
+      "adapter": "native"
+    },
+    {
+      "id": "linkfinder",
+      "runner_id": "linkfinder",
+      "binary": "linkfinder",
+      "block": "08-js-api-parameters",
+      "capability": "JavaScript endpoint extraction",
+      "inputs": [
+        "url-list"
+      ],
+      "outputs": [
+        "url",
+        "path"
+      ],
+      "profiles": [
+        "full",
+        "deep"
+      ],
+      "contact": "active",
+      "adapter": "url-output",
+      "version": [
+        "-h"
+      ],
+      "help": [
+        "-h"
+      ],
+      "identity": [
+        "linkfinder"
+      ]
+    },
+    {
+      "id": "secretfinder",
+      "runner_id": "secretfinder",
+      "binary": "secretfinder",
+      "block": "08-js-api-parameters",
+      "capability": "JavaScript secret candidate extraction",
+      "inputs": [
+        "url-list"
+      ],
+      "outputs": [
+        "finding"
+      ],
+      "profiles": [
+        "full",
+        "deep"
+      ],
+      "contact": "active",
+      "adapter": "url-output",
+      "version": [
+        "-h"
+      ],
+      "help": [
+        "-h"
+      ],
+      "identity": [
+        "secretfinder"
+      ]
+    },
+    {
+      "id": "jsfscan",
+      "runner_id": "jsfscan",
+      "binary": "",
+      "block": "08-js-api-parameters",
+      "capability": "built-in JavaScript reconnaissance",
+      "inputs": [
+        "url-list"
+      ],
+      "outputs": [
+        "url",
+        "path",
+        "parameter",
+        "finding"
+      ],
+      "profiles": [
+        "deep"
+      ],
+      "contact": "active",
+      "adapter": "native"
+    },
+    {
+      "id": "paramspider",
+      "runner_id": "paramspider",
+      "binary": "paramspider",
+      "block": "08-js-api-parameters",
+      "capability": "historical parameter discovery",
+      "inputs": [
+        "host"
+      ],
+      "outputs": [
+        "url",
+        "parameter"
+      ],
+      "profiles": [
+        "full",
+        "deep"
+      ],
+      "contact": "passive",
+      "adapter": "domain-output",
+      "version": [
+        "-h"
+      ],
+      "help": [
+        "-h"
+      ],
+      "identity": [
+        "paramspider"
+      ]
+    },
+    {
+      "id": "paraminer",
+      "runner_id": "paraminer",
+      "binary": "",
+      "block": "08-js-api-parameters",
+      "capability": "built-in hidden parameter discovery",
+      "inputs": [
+        "url-list"
+      ],
+      "outputs": [
+        "parameter",
+        "finding"
+      ],
+      "profiles": [
+        "deep"
+      ],
+      "contact": "active",
+      "adapter": "native"
+    },
+    {
+      "id": "arjun",
+      "runner_id": "arjun",
+      "binary": "arjun",
+      "block": "08-js-api-parameters",
+      "capability": "HTTP parameter discovery",
+      "inputs": [
+        "url-list"
+      ],
+      "outputs": [
+        "parameter",
+        "finding"
+      ],
+      "profiles": [
+        "full",
+        "deep"
+      ],
+      "contact": "active",
+      "adapter": "url-output",
+      "version": [
+        "--version"
+      ],
+      "help": [
+        "--help"
+      ],
+      "identity": [
+        "arjun"
+      ]
+    },
+    {
+      "id": "swagger_openapi",
+      "runner_id": "swagger_openapi",
+      "binary": "",
+      "block": "08-js-api-parameters",
+      "capability": "Swagger and OpenAPI extraction",
+      "inputs": [
+        "url-list"
+      ],
+      "outputs": [
+        "url",
+        "path",
+        "parameter",
+        "technology"
+      ],
+      "profiles": [
+        "full",
+        "deep"
+      ],
+      "contact": "active",
+      "adapter": "native"
+    },
+    {
+      "id": "graphql",
+      "runner_id": "graphql",
+      "binary": "",
+      "block": "08-js-api-parameters",
+      "capability": "GraphQL endpoint and schema detection",
+      "inputs": [
+        "url-list"
+      ],
+      "outputs": [
+        "url",
+        "path",
+        "parameter",
+        "technology"
+      ],
+      "profiles": [
+        "full",
+        "deep"
+      ],
+      "contact": "active",
+      "adapter": "native"
+    },
+    {
+      "id": "postman",
+      "runner_id": "postman",
+      "binary": "",
+      "block": "08-js-api-parameters",
+      "capability": "Postman collection discovery and parsing",
+      "inputs": [
+        "url-list",
+        "local-artifact"
+      ],
+      "outputs": [
+        "url",
+        "path",
+        "parameter"
+      ],
+      "profiles": [
+        "deep"
+      ],
+      "contact": "active",
+      "adapter": "native"
+    },
+    {
+      "id": "source_maps",
+      "runner_id": "source_maps",
+      "binary": "",
+      "block": "08-js-api-parameters",
+      "capability": "JavaScript source map discovery and parsing",
+      "inputs": [
+        "url-list"
+      ],
+      "outputs": [
+        "url",
+        "path",
+        "finding"
+      ],
+      "profiles": [
+        "deep"
+      ],
+      "contact": "active",
+      "adapter": "native"
+    },
+    {
+      "id": "whatweb",
+      "runner_id": "technology_fingerprint",
+      "binary": "whatweb",
+      "block": "09-fingerprint-waf-tls",
+      "capability": "HTTP technology fingerprinting",
+      "inputs": [
+        "url-list"
+      ],
+      "outputs": [
+        "technology",
+        "fingerprint"
+      ],
+      "profiles": [
+        "baseline",
+        "full",
+        "deep"
+      ],
+      "contact": "active",
+      "adapter": "url-output",
+      "version": [
+        "--version"
+      ],
+      "help": [
+        "--help"
+      ],
+      "identity": [
+        "whatweb"
+      ]
+    },
+    {
+      "id": "wafw00f",
+      "runner_id": "wafw00f",
+      "binary": "wafw00f",
+      "block": "09-fingerprint-waf-tls",
+      "capability": "WAF fingerprinting",
+      "inputs": [
+        "url-list"
+      ],
+      "outputs": [
+        "technology",
+        "fingerprint",
+        "finding"
+      ],
+      "profiles": [
+        "full",
+        "deep"
+      ],
+      "contact": "active",
+      "adapter": "url-output",
+      "version": [
+        "--version"
+      ],
+      "help": [
+        "--help"
+      ],
+      "identity": [
+        "wafw00f"
+      ]
+    },
+    {
+      "id": "httpx_tech",
+      "runner_id": "httpx_tech",
+      "binary": "httpx",
+      "block": "09-fingerprint-waf-tls",
+      "capability": "independent HTTPX technology fingerprinting",
+      "inputs": [
+        "url-list"
+      ],
+      "outputs": [
+        "technology",
+        "fingerprint"
+      ],
+      "profiles": [
+        "full",
+        "deep"
+      ],
+      "contact": "active",
+      "adapter": "stdin-output",
+      "version": [
+        "-version"
+      ],
+      "help": [
+        "-h"
+      ],
+      "identity": [
+        "httpx"
+      ]
+    },
+    {
+      "id": "testssl",
+      "runner_id": "tls_configuration",
+      "binary": "testssl.sh",
+      "alternates": [
+        "testssl"
+      ],
+      "block": "09-fingerprint-waf-tls",
+      "capability": "TLS configuration assessment",
+      "inputs": [
+        "origin"
+      ],
+      "outputs": [
+        "fingerprint",
+        "finding"
+      ],
+      "profiles": [
+        "full",
+        "deep"
+      ],
+      "contact": "active",
+      "adapter": "url-output",
+      "version": [
+        "--version"
+      ],
+      "help": [
+        "--help"
+      ],
+      "identity": [
+        "testssl"
+      ]
+    },
+    {
+      "id": "sslscan",
+      "runner_id": "sslscan",
+      "binary": "sslscan",
+      "block": "09-fingerprint-waf-tls",
+      "capability": "TLS cipher and certificate assessment",
+      "inputs": [
+        "origin"
+      ],
+      "outputs": [
+        "fingerprint",
+        "finding"
+      ],
+      "profiles": [
+        "full",
+        "deep"
+      ],
+      "contact": "active",
+      "adapter": "url-output",
+      "version": [
+        "--version"
+      ],
+      "help": [
+        "--help"
+      ],
+      "identity": [
+        "sslscan"
+      ]
+    },
+    {
+      "id": "openssl",
+      "runner_id": "openssl",
+      "binary": "openssl",
+      "block": "09-fingerprint-waf-tls",
+      "capability": "TLS certificate observation",
+      "inputs": [
+        "origin"
+      ],
+      "outputs": [
+        "fingerprint"
+      ],
+      "profiles": [
+        "baseline",
+        "full",
+        "deep"
+      ],
+      "contact": "active",
+      "adapter": "tls-native-cli",
+      "version": [
+        "version"
+      ],
+      "help": [
+        "help"
+      ],
+      "identity": [
+        "openssl"
+      ]
+    },
+    {
+      "id": "nmap_tls",
+      "runner_id": "nmap_tls",
+      "binary": "nmap",
+      "block": "09-fingerprint-waf-tls",
+      "capability": "Nmap TLS script assessment",
+      "inputs": [
+        "service"
+      ],
+      "outputs": [
+        "fingerprint",
+        "finding"
+      ],
+      "profiles": [
+        "deep"
+      ],
+      "contact": "active",
+      "adapter": "network-output",
+      "version": [
+        "--version"
+      ],
+      "help": [
+        "--help"
+      ],
+      "identity": [
+        "nmap"
+      ]
+    },
+    {
+      "id": "nuclei",
+      "runner_id": "template_checks",
+      "binary": "nuclei",
+      "block": "10-assessment",
+      "capability": "template-based assessment",
+      "inputs": [
+        "url-list"
+      ],
+      "outputs": [
+        "finding"
+      ],
+      "profiles": [
+        "full",
+        "deep"
+      ],
+      "contact": "active",
+      "adapter": "url-output",
+      "version": [
+        "-version",
+        "-duc"
+      ],
+      "help": [
+        "-h"
+      ],
+      "identity": [
+        "nuclei"
+      ]
+    },
+    {
+      "id": "nikto",
+      "runner_id": "web_server_check",
+      "binary": "nikto",
+      "block": "10-assessment",
+      "capability": "web server assessment",
+      "inputs": [
+        "origin"
+      ],
+      "outputs": [
+        "finding"
+      ],
+      "profiles": [
+        "full",
+        "deep"
+      ],
+      "contact": "active",
+      "adapter": "url-output",
+      "version": [
+        "-Version"
+      ],
+      "help": [
+        "-Help"
+      ],
+      "identity": [
+        "nikto"
+      ]
+    },
+    {
+      "id": "wapiti",
+      "runner_id": "web_audit_secondary",
+      "binary": "wapiti",
+      "block": "10-assessment",
+      "capability": "web application assessment",
+      "inputs": [
+        "origin"
+      ],
+      "outputs": [
+        "finding"
+      ],
+      "profiles": [
+        "deep"
+      ],
+      "contact": "active",
+      "adapter": "url-output",
+      "version": [
+        "--version"
+      ],
+      "help": [
+        "--help"
+      ],
+      "identity": [
+        "wapiti"
+      ]
+    },
+    {
+      "id": "arachni",
+      "runner_id": "web_audit_report",
+      "binary": "",
+      "block": "10-assessment",
+      "capability": "built-in assessment evidence aggregation",
+      "inputs": [
+        "local-artifact"
+      ],
+      "outputs": [
+        "finding"
+      ],
+      "profiles": [
+        "deep"
+      ],
+      "contact": "local",
+      "adapter": "native"
+    },
+    {
+      "id": "zap_baseline",
+      "runner_id": "web_proxy_passive",
+      "binary": "podman",
+      "alternates": [
+        "docker"
+      ],
+      "block": "10-assessment",
+      "capability": "ZAP baseline assessment through a local container or verified native CLI",
+      "inputs": [
+        "origin"
+      ],
+      "outputs": [
+        "finding"
+      ],
+      "profiles": [
+        "full",
+        "deep"
+      ],
+      "contact": "active",
+      "adapter": "native-zap-container-or-cli",
+      "version": [
+        "--version"
+      ],
+      "help": [
+        "--help"
+      ],
+      "identity": [
+        "podman",
+        "docker"
+      ]
+    },
+    {
+      "id": "zap_full",
+      "runner_id": "web_proxy_active",
+      "binary": "podman",
+      "alternates": [
+        "docker"
+      ],
+      "block": "10-assessment",
+      "capability": "ZAP full active assessment through a local container or verified native CLI",
+      "inputs": [
+        "origin"
+      ],
+      "outputs": [
+        "finding"
+      ],
+      "profiles": [
+        "deep"
+      ],
+      "contact": "active-explicit",
+      "adapter": "native-zap-container-or-cli",
+      "version": [
+        "--version"
+      ],
+      "help": [
+        "--help"
+      ],
+      "identity": [
+        "podman",
+        "docker"
+      ]
+    },
+    {
+      "id": "sqlmap",
+      "runner_id": "parameter_validation",
+      "binary": "sqlmap",
+      "alternates": [
+        "sqlmap.py"
+      ],
+      "block": "10-assessment",
+      "capability": "SQL injection validation",
+      "inputs": [
+        "url-with-parameter"
+      ],
+      "outputs": [
+        "finding"
+      ],
+      "profiles": [
+        "full",
+        "deep"
+      ],
+      "contact": "active-explicit",
+      "adapter": "url-output",
+      "version": [
+        "--version"
+      ],
+      "help": [
+        "-hh"
+      ],
+      "identity": [
+        "sqlmap"
+      ]
+    },
+    {
+      "id": "ssrfmap",
+      "runner_id": "ssrfmap",
+      "binary": "ssrfmap",
+      "block": "10-assessment",
+      "capability": "SSRF validation",
+      "inputs": [
+        "url-with-parameter"
+      ],
+      "outputs": [
+        "finding"
+      ],
+      "profiles": [
+        "deep"
+      ],
+      "contact": "active-explicit",
+      "adapter": "url-output",
+      "version": [
+        "-h"
+      ],
+      "help": [
+        "-h"
+      ],
+      "identity": [
+        "ssrfmap"
+      ]
+    },
+    {
+      "id": "dalfox",
+      "runner_id": "dalfox",
+      "binary": "dalfox",
+      "block": "10-assessment",
+      "capability": "XSS validation",
+      "inputs": [
+        "url-with-parameter"
+      ],
+      "outputs": [
+        "finding"
+      ],
+      "profiles": [
+        "full",
+        "deep"
+      ],
+      "contact": "active-explicit",
+      "adapter": "url-output",
+      "version": [
+        "version"
+      ],
+      "help": [
+        "--help"
+      ],
+      "identity": [
+        "dalfox"
+      ]
+    },
+    {
+      "id": "nosqlmap",
+      "runner_id": "nosqlmap",
+      "binary": "",
+      "block": "10-assessment",
+      "capability": "built-in NoSQL differential validation",
+      "inputs": [
+        "url-with-parameter"
+      ],
+      "outputs": [
+        "finding"
+      ],
+      "profiles": [
+        "deep"
+      ],
+      "contact": "active-explicit",
+      "adapter": "native"
+    },
+    {
+      "id": "subzy",
+      "runner_id": "subzy",
+      "binary": "subzy",
+      "block": "10-assessment",
+      "capability": "subdomain takeover validation",
+      "inputs": [
+        "host-list"
+      ],
+      "outputs": [
+        "finding"
+      ],
+      "profiles": [
+        "full",
+        "deep"
+      ],
+      "contact": "active",
+      "adapter": "stdin-output",
+      "version": [
+        "version"
+      ],
+      "help": [
+        "--help"
+      ],
+      "identity": [
+        "subzy"
+      ]
+    },
+    {
+      "id": "native_advisory_correlation",
+      "runner_id": "native_advisory_correlation",
+      "binary": "",
+      "block": "10-assessment",
+      "capability": "offline advisory correlation from observed product and version evidence",
+      "inputs": [
+        "service",
+        "technology",
+        "fingerprint"
+      ],
+      "outputs": [
+        "finding"
+      ],
+      "profiles": [
+        "full",
+        "deep"
+      ],
+      "contact": "local",
+      "adapter": "native"
+    },
+    {
+      "id": "gitleaks",
+      "runner_id": "gitleaks",
+      "binary": "gitleaks",
+      "block": "11-local-cloud",
+      "capability": "local repository secret scanning",
+      "inputs": [
+        "local-artifact"
+      ],
+      "outputs": [
+        "finding"
+      ],
+      "profiles": [
+        "full",
+        "deep"
+      ],
+      "contact": "none",
+      "adapter": "local-only",
+      "version": [
+        "version"
+      ],
+      "help": [
+        "--help"
+      ],
+      "identity": [
+        "gitleaks"
+      ]
+    },
+    {
+      "id": "trufflehog",
+      "runner_id": "trufflehog",
+      "binary": "trufflehog",
+      "alternates": [
+        "ah-puch-trufflehog"
+      ],
+      "block": "11-local-cloud",
+      "capability": "local artifact secret scanning",
+      "inputs": [
+        "local-artifact"
+      ],
+      "outputs": [
+        "finding"
+      ],
+      "profiles": [
+        "full",
+        "deep"
+      ],
+      "contact": "none",
+      "adapter": "local-only",
+      "version": [
+        "--version"
+      ],
+      "help": [
+        "--help"
+      ],
+      "identity": [
+        "trufflehog"
+      ]
+    },
+    {
+      "id": "gowitness",
+      "runner_id": "gowitness",
+      "binary": "gowitness",
+      "block": "11-local-cloud",
+      "capability": "web screenshot evidence",
+      "inputs": [
+        "url-list"
+      ],
+      "outputs": [
+        "fingerprint"
+      ],
+      "profiles": [
+        "full",
+        "deep"
+      ],
+      "contact": "active",
+      "adapter": "stdin-output",
+      "version": [
+        "version"
+      ],
+      "help": [
+        "--help"
+      ],
+      "identity": [
+        "gowitness"
+      ]
+    },
+    {
+      "id": "cloudunflare",
+      "runner_id": "cloudunflare",
+      "binary": "cloudunflare",
+      "block": "11-local-cloud",
+      "capability": "CDN origin candidate enrichment",
+      "inputs": [
+        "host"
+      ],
+      "outputs": [
+        "ip",
+        "finding"
+      ],
+      "profiles": [
+        "deep"
+      ],
+      "contact": "passive",
+      "adapter": "domain-stdout",
+      "version": [
+        "--help"
+      ],
+      "help": [
+        "--help"
+      ],
+      "identity": [
+        "cloudunflare"
+      ]
+    },
+    {
+      "id": "shodan",
+      "runner_id": "shodan",
+      "binary": "shodan",
+      "block": "11-local-cloud",
+      "capability": "Shodan asset enrichment",
+      "inputs": [
+        "host",
+        "ip"
+      ],
+      "outputs": [
+        "ip",
+        "service",
+        "technology",
+        "finding"
+      ],
+      "profiles": [
+        "deep"
+      ],
+      "contact": "passive",
+      "adapter": "cloud-cli",
+      "credential_env": "SHODAN_API_KEY",
+      "version": [
+        "version"
+      ],
+      "help": [
+        "--help"
+      ],
+      "identity": [
+        "shodan"
+      ]
+    },
+    {
+      "id": "censys",
+      "runner_id": "censys",
+      "binary": "censys",
+      "block": "11-local-cloud",
+      "capability": "Censys asset enrichment",
+      "inputs": [
+        "host",
+        "ip"
+      ],
+      "outputs": [
+        "ip",
+        "service",
+        "technology",
+        "finding"
+      ],
+      "profiles": [
+        "deep"
+      ],
+      "contact": "passive",
+      "adapter": "cloud-cli",
+      "credential_env": "CENSYS_API_ID,CENSYS_API_SECRET",
+      "version": [
+        "--version"
+      ],
+      "help": [
+        "--help"
+      ],
+      "identity": [
+        "censys"
+      ]
+    },
+    {
+      "id": "greynoise",
+      "runner_id": "greynoise",
+      "binary": "greynoise",
+      "block": "11-local-cloud",
+      "capability": "GreyNoise IP enrichment",
+      "inputs": [
+        "ip"
+      ],
+      "outputs": [
+        "finding",
+        "technology"
+      ],
+      "profiles": [
+        "deep"
+      ],
+      "contact": "passive",
+      "adapter": "cloud-cli",
+      "credential_env": "GREYNOISE_API_KEY",
+      "version": [
+        "version"
+      ],
+      "help": [
+        "--help"
+      ],
+      "identity": [
+        "greynoise"
+      ]
+    },
+    {
+      "id": "virustotal",
+      "runner_id": "virustotal",
+      "binary": "vt",
+      "block": "11-local-cloud",
+      "capability": "VirusTotal asset enrichment",
+      "inputs": [
+        "host",
+        "ip",
+        "url"
+      ],
+      "outputs": [
+        "finding",
+        "technology"
+      ],
+      "profiles": [
+        "deep"
+      ],
+      "contact": "passive",
+      "adapter": "cloud-cli",
+      "credential_env": "VT_API_KEY",
+      "version": [
+        "version"
+      ],
+      "help": [
+        "--help"
+      ],
+      "identity": [
+        "virustotal",
+        "vt"
+      ]
+    },
+    {
+      "id": "hunter",
+      "runner_id": "hunter",
+      "binary": "",
+      "block": "11-local-cloud",
+      "capability": "built-in public contact enrichment",
+      "inputs": [
+        "host"
+      ],
+      "outputs": [
+        "finding"
+      ],
+      "profiles": [
+        "deep"
+      ],
+      "contact": "passive",
+      "adapter": "native",
+      "credential_env": "HUNTER_API_KEY"
+    },
+    {
+      "id": "fofa",
+      "runner_id": "fofa",
+      "binary": "",
+      "block": "11-local-cloud",
+      "capability": "built-in Internet asset enrichment",
+      "inputs": [
+        "host",
+        "ip"
+      ],
+      "outputs": [
+        "ip",
+        "service",
+        "technology",
+        "finding"
+      ],
+      "profiles": [
+        "deep"
+      ],
+      "contact": "passive",
+      "adapter": "native",
+      "credential_env": "FOFA_EMAIL,FOFA_KEY"
+    },
+    {
+      "id": "native_device_ics",
+      "runner_id": "native_device_ics",
+      "binary": "",
+      "block": "12-device-ics",
+      "capability": "native device and industrial protocol analysis",
+      "inputs": [
+        "service",
+        "url",
+        "technology",
+        "fingerprint"
+      ],
+      "outputs": [
+        "technology",
+        "fingerprint",
+        "finding"
+      ],
+      "profiles": [
+        "full",
+        "deep"
+      ],
+      "contact": "local",
+      "adapter": "native"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "purpose": "Canonical declarative corrections applied to the historical modules.json base until the base catalog can be rewritten atomically.",
+  "legacy_module_parity": {
+    "1": "associated_hosts.py",
+    "2": "dns_over_https.py",
+    "3": "dns_records.py",
+    "4": "dnssec.py",
+    "5": "domain_info.py",
+    "6": "domain_reputation_check.py",
+    "7": "http2_http3_checker.py",
+    "8": "ip_info.py",
+    "9": "open_ports.py",
+    "10": "server_info.py"
+  },
+  "native_aliases": {},
+  "option_additions": {
+    "6": ["otx_key"],
+    "7": ["timeout"],
+    "9": ["ports", "threads", "timeout", "no_fallback"],
+    "42": ["ports", "timeout", "max_hosts"],
+    "44": ["ports", "retries", "max_hosts"],
+    "72": ["threads", "timeout", "limit"],
+    "106": ["threads", "no_cache"]
+  },
+  "option_defaults": {
+    "otx_key": "",
+    "ports": "1-1024",
+    "retries": 1,
+    "no_fallback": 0,
+    "no_cache": 0
+  },
+  "module_option_defaults": {
+    "42.ports": "22",
+    "44.ports": "53,123,161,500,514,69",
+    "44.retries": 1,
+    "44.max_hosts": 256
+  },
+  "name_overrides": {},
+  "description_overrides": {}
+}

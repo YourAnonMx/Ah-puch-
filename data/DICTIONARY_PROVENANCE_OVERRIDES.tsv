@@ -1,0 +1,8 @@
+current_path	status	justification
+data/payloads/sqli.txt	NORMALIZED_DOCUMENTED	Removed two legacy control prefixes, empty lines, and the appended Python/database artifact; retained the payload corpus before the artifact boundary.
+data/payloads/xss.txt	NORMALIZED_DOCUMENTED	Retained the payload prefix before the legacy CWS binary artifact boundary.
+data/wordlists/categories/big_short.txt	NORMALIZED_DOCUMENTED	Repaired one invalid replacement character to the verified UTF-8 spelling secció.
+data/wordlists/categories/dotfiles_short.txt	NORMALIZED_DOCUMENTED	Removed trailing whitespace from two entries while preserving their values.
+data/wordlists/categories/medium_short.txt	NORMALIZED_DOCUMENTED	Repaired one invalid replacement character to the verified UTF-8 spelling secció.
+data/wordlists/categories/raft-medium-directories_short.txt	NORMALIZED_DOCUMENTED	Repaired one U+001F control byte in error_log to the intended underscore.
+data/wordlists/web-short.txt	NORMALIZED_DOCUMENTED	Removed the bounded embedded GitHub HTML page and empty lines from the legacy aggregate; all non-empty entries are retained.
