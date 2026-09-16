@@ -99,7 +99,7 @@ The installer stores private configuration and run data there, creates an
 `activate.sh` helper, and places a command link in
 `${AH_PUCH_BIN_DIR:-$HOME/.local/bin}`. Provider values are saved only when
 `--api-prompt` is explicitly selected. The private file is mode `0600`; secret
-values are never placed in Git, command arguments, receipts, or reports.
+values are never placed in command arguments, receipts, or reports.
 
 Runtime requirements are Python 3.10 or newer and the packages listed in
 `requirements.txt`. External tools are optional at runtime and are admitted
