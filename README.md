@@ -589,25 +589,12 @@ proof-of-concept code.
 
 ## Privacy and operator controls
 
-- Scope is derived from the supplied target and cannot be widened by a
-  redirect, certificate name, provider result, or discovered link.
-- Active/intrusive consumers are opt-in by profile or flag and remain bounded
-  by request, result, response, execution, concurrency, and elapsed-time caps.
-- Normal runs do not pause for an authorization question or require an
-  authorization manifest; the target input is the complete run boundary.
 - Optional credential validation requires explicit flags and reads a named
   environment variable rather than accepting a password on the command line.
-- API keys, passwords, and private audit inputs are excluded from receipts,
+- API keys and private audit inputs are excluded from receipts,
   reports, archives, and source control.
 - ZAP, Nikto, Wapiti, Arachni, SQLMap, SSRF, XSS, NoSQL, and SSH credential
   paths are bounded and are never silently enabled by passive discovery.
-- The application writes only inside its configured data/output roots during a
-  run; it does not touch unrelated disks or reconfigure the host.
-
-## Repository contents
-
-The private publication contains only the runnable source, required manifests,
-bundled data, installer, and README media:
 
 ```text
 ah-puch                         launcher
@@ -623,11 +610,6 @@ tools/install_readiness.py      all-tools readiness helper
 assets/                         README screenshots and Ah Puch mark
 README.md                       English publication documentation
 ```
-
-Generated reports, caches, virtual environments, test suites, audit work
-files, journals, API stores, build directories, and local run results are not
-part of the publication tree.
-
 ## License and use
 
 Educational purpose only
