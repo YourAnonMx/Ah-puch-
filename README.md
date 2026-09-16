@@ -613,5 +613,3 @@ README.md                       English publication documentation
 ## License and use
 
 Educational purpose only
-Keep provider credentials, private dictionaries, target lists, and assessment
-results outside Git.
