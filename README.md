@@ -35,7 +35,7 @@ explicit features, not prerequisites for the normal workflow.
 ## Quick start
 
 ```sh
-git clone <private-repository-url> ah-puch
+git clone https://github.com/YourAnonMx/Ah-puch-
 cd ah-puch
 
 # Small local installation.
