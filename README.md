@@ -1,6 +1,6 @@
 # Ah Puch
 
-<img width="1920" height="1080" alt="d91zk1i-b3fa7931-baac-4b14-b480-83bbb338fa13" src="https://github.com/user-attachments/assets/4dcea24f-2826-406f-bbed-b37dcb856a81" />
+<img width="1920" height="1080" alt="d91zk1i-b3fa7931-baac-4b14-b480-83bbb338fa13" src="https://github.com/user-attachments/assets/4dcea24f-2826-406f-bbed-b37dcb856a81" /> 
 
 Ah Puch is a modular target-assessment runtime for private, owner-controlled
 security work. It
